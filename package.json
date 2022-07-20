@@ -18,11 +18,10 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4",
     "react-time-format": "^0.0.5"
-    
   },
   "engines": {
     "node": "18.3.0",
-    "npm": "8.13.2"	
+    "npm": "8.13.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,5 +49,18 @@
   },
   "devDependencies": {
     "react-time-format": "^0.0.5"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris92vr/budget-tracker-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chris92vr/budget-tracker-frontend/issues"
+  },
+  "homepage": "https://github.com/chris92vr/budget-tracker-frontend#readme"
 }
