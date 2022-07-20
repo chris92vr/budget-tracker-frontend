@@ -10,7 +10,7 @@ export default function AddBudgetButton({ show, handleClose }) {
   const submit = (e) =>  {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/addbudget', {
+    const response = fetch('https://budget-tracker-go-backend.herokuapp.com/addbudget', {
 
     method: 'POST',
     headers: {'Content-Type': 'application/json'},

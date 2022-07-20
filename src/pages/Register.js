@@ -14,7 +14,7 @@ const Register = () => {
     const submit = (e) =>  {
         e.preventDefault();
 
-        const response = fetch('http://localhost:8000/signup', {
+        const response = fetch('https://budget-tracker-go-backend.herokuapp.com/signup', {
    
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

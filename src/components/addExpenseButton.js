@@ -12,7 +12,7 @@ export default function AddExpenseButton({ show, handleClose, defaultBudgetId })
   const submit = (e) =>  {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/addexpense', {
+    const response = fetch('https://budget-tracker-go-backend.herokuapp.com/addexpense', {
 
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
@@ -54,7 +54,7 @@ useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/getbudgets');
+      const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/getbudgets');
       // convert the data to json
       const json = await user.json();
 

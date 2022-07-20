@@ -14,7 +14,7 @@ const LogoutButton = () => {
     const submit =  (e) => {
         e.preventDefault();
   
-        const response = fetch('http://localhost:8000/logout', {
+        const response = fetch('https://budget-tracker-go-backend.herokuapp.com/logout', {
           
          
         method: 'POST',

@@ -14,7 +14,7 @@ const ProfileButton = () => {
 
         e.preventDefault();
 
-        const response = fetch('http://localhost:8000/profile', {
+        const response = fetch('https://budget-tracker-go-backend.herokuapp.com/profile', {
 
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

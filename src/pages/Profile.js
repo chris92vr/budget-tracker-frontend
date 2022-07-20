@@ -16,7 +16,7 @@ const UserProfile = () => {
         // declare the async data fetching function
         const fetchData = async () => {
           // get the data from the api
-          const user = await fetch('http://localhost:8000/profile');
+          const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/profile');
           // convert the data to json
           const json = await user.json();
       
