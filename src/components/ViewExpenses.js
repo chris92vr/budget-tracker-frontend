@@ -2,16 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Modal, Button, Stack } from "react-bootstrap"
 import { currencyFormatter } from "../utils"
-import Time from 'react-time-format'
+
 
 
 function deleteBudget(budgetId) {
-  fetch(`http://localhost:8000/deletebudget?budget_id=${budgetId}`, {
+  fetch(`https://budget-tracker-go-backend.herokuapp.com/deletebudget?budget_id=${budgetId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'mode': 'no-cors',
-      'Access-Control-Allow-Origin': '*'
+      
 
     }
   })
@@ -25,12 +24,11 @@ function deleteBudget(budgetId) {
 
 
 function deleteExpense(expenseId) {
-  fetch(`http://localhost:8000/deleteexpense?expense_id=${expenseId}`, {
+  fetch(`https://budget-tracker-go-backend.herokuapp.com/deleteexpense?expense_id=${expenseId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'mode': 'no-cors',
-      'Access-Control-Allow-Origin': '*'
+      
     }
   })
     .then(res => res.json())
@@ -51,7 +49,7 @@ function ViewExpenses ({ budgetId, handleClose}) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const user = await fetch(`http://localhost:8000/getexpenses?budget_id=${budgetId}`);
+      const user = await fetch(`https://budget-tracker-go-backend.herokuapp.com/getexpenses?budget_id=${budgetId}`);
       if (user.status === 200 && user != null) {
         const json = await user.json();
         setExpenses(json);
