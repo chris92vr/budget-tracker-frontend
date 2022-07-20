@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/chris92vr/budget-tracker-frontend/static/css/main.ccd71def.css",
+    "main.js": "/chris92vr/budget-tracker-frontend/static/js/main.b1e54764.js",
+    "static/js/787.b30e5c43.chunk.js": "/chris92vr/budget-tracker-frontend/static/js/787.b30e5c43.chunk.js",
+    "index.html": "/chris92vr/budget-tracker-frontend/index.html",
+    "main.ccd71def.css.map": "/chris92vr/budget-tracker-frontend/static/css/main.ccd71def.css.map",
+    "main.b1e54764.js.map": "/chris92vr/budget-tracker-frontend/static/js/main.b1e54764.js.map",
+    "787.b30e5c43.chunk.js.map": "/chris92vr/budget-tracker-frontend/static/js/787.b30e5c43.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ccd71def.css",
+    "static/js/main.b1e54764.js"
+  ]
+}
