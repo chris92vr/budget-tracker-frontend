@@ -5,6 +5,7 @@ import { currencyFormatter } from "../utils"
 
 
 
+
 function deleteBudget(budgetId) {
   fetch(`https://budget-tracker-go-backend.herokuapp.com/deletebudget?budget_id=${budgetId}`, {
     method: 'DELETE',
@@ -87,7 +88,8 @@ function ViewExpenses ({ budgetId, handleClose}) {
         {Array.isArray(expenses)
            ? expenses.map(expense => (
             <Stack direction="horizontal" gap="2" key={expense.expense_id}>
-              <div className="me-auto fs-4">{expense.description} - <Time value={expense.created_at} format="DD/MM/YYYY hh:mm" /> </div>
+              <div className="me-auto fs-4">{expense.description} - {expense.created_at} 
+                 </div>
               <div className="fs-5">
                 {currencyFormatter.format(expense.amount)}
               </div>
