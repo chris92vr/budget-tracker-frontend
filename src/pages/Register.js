@@ -53,36 +53,37 @@ const Register = () => {
     
         
   return (
-    <form onSubmit={submit}>
+    <div className="form-signin">
+    <form onSubmit={submit} className="border border-primary m-5 p-3 border-2 rounded-end">
    
     <h1 className="h3 mb-3 fw-normal">Please register</h1>
-    <div className="form-floating">
-      <input type="text" className="form-control"  placeholder="Username" required
+   
+      <input type="text" className="form-control w-30"  placeholder="Username" required
             onChange={(e) => setUsername(e.target.value)}      />
      
-    </div>
+  
      
   
-    <div className="form-floating">
+    
       <input type="email" className="form-control"  placeholder="name@example.com" required
             onChange={(e) => setEmail(e.target.value)}      />
      
-    </div>
-    <div className="form-floating">
+  
+   
       <input type="password" className="form-control" placeholder="Password" required
             onChange={(e) => setPassword(e.target.value)}      />
       
-    </div>
-    
+  
 
     <div className="checkbox mb-3">
      
       
       
     </div>
-    <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    <button className="w-100 btn btn-lg btn-primary w-30" type="submit">Register</button>
     
   </form>
+  </div>
   );
 }
 

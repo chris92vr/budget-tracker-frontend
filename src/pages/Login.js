@@ -47,18 +47,20 @@ const Login = () => {
     
 }
 return (
-    <form onSubmit={submit}>
+    <div className="form-signin">
+    <form onSubmit={submit} className="border border-primary m-5 p-3 border-2 rounded-end">
           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-          <input type="text" className="form-control" placeholder="Username" required
+          <input type="text" className="form-control w-30" placeholder="Username" required
                  onChange={e => setUsername(e.target.value)}
           />
 
-          <input type="password" className="form-control" placeholder="Password" required
+          <input type="password" className="form-control w-30" placeholder="Password" required
                  onChange={e => setPassword(e.target.value)}
           />
 
-          <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          <button className="w-30 mt-3 mb-2 btn btn-lg btn-primary" type="submit">Sign in</button>
       </form>
+    </div>
   );
 
 }

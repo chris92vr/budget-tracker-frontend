@@ -37,7 +37,7 @@ const ProfileButton = () => {
 
     return (
         <form onSubmit={submit}  >
-        <button  className="profile-button border-0 bg-white  " type="submit">
+        <button  className="profile-button border-0 bg-light mt-1  " type="submit">
         Profile   <FontAwesomeIcon icon={{prefix: 'fas', iconName: 'user'}} />
         </button>
         </form>

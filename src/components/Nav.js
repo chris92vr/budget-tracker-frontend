@@ -41,7 +41,7 @@ const Nav = () => {
           {isLoggedIn() ? <> 
             <li className="nav-item 1"><LogoutButton /></li>
             
-            <li className="nav-item 1"><ProfileButton /></li>
+            <li className="nav-item 1 "><ProfileButton /></li>
           
             </> : null}
 

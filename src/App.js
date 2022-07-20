@@ -6,6 +6,9 @@ import Nav from './components/Nav';
 import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import Profile from './pages/Profile';
+import Container from "react-bootstrap/Container"
+
+
 
 function isLoggedIn() {
   return Cookies.get('session_token') !== undefined;
@@ -19,8 +22,8 @@ function App() {
         <Nav />
 
 
-         
-     <main className="form-signin w-100 m-auto mt-5">
+        
+     <main className="w-100 m-auto mt-5">
         <Routes>
      <Route path="/login" element={<Login />}/>
      <Route path="/register" element={<Register />}/>
@@ -29,10 +32,11 @@ function App() {
       {isLoggedIn() ? <> <Routes> <Route path="/" element={<Home />}/>
      
      
-     <Route path="/profile" element={<Profile />}/> </Routes> </> :  <p> Log in or register</p>}
+     <Route path="/profile" element={<Profile />}/> </Routes> </> :  <p>Please Log in or register</p>}
       
       
       </main>
+    
       </BrowserRouter>
     </div>
   );

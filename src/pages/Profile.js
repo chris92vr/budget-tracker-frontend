@@ -36,11 +36,11 @@ const UserProfile = () => {
       }, [])
 
     return (
-        <div>
+        <div className='form-signin'>
             <h1>User Profile</h1>
             
-            <p>HI {user}!</p>	
-            <p>email: {email}</p>
+            <h3 className='m-5'>HI {user}!</h3>	
+            <h4 >email: {email}</h4>
             
                                 
             </div>

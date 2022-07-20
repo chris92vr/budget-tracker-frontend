@@ -15,7 +15,8 @@ function Home() {
     const [showAddExpenseButton, setShowAddExpenseButton] = useState(false)
     const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState()
     const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
-
+  
+    
     
    const [Budgets, setBudgets] = useState([]);
    
@@ -52,14 +53,45 @@ function Home() {
         
           
       }, [])
+
+      
+
+        const [total_max, setTotalMax] = useState('');
+        const [total_amount, setTotalAmount] = useState('');
+       
+    
+        useEffect(() => {
+            // declare the async data fetching function
+            const fetchData = async () => {
+              // get the data from the api
+              const user = await fetch('http://localhost:8000/totalBudget');
+              // convert the data to json
+              const json = await user.json();
+          
+              // set state with the result
+              setTotalMax(json.total_max);
+              setTotalAmount(json.total_amount);
+    
+    
+            }
+          
+            // call the function
+            const result = fetchData()
+              // make sure to catch any error
+              .catch(console.error);;
+              console.log(result);
+              
+          }, [])
+    
       
     return (
         <>
-        <div className="container">
+        <Container className="my-4">
             <Stack direction="horizontal" className="mt-4 mb-4">
       <h1 className=" me-auto">Budget Tracker © </h1> 
       <CurrentDate />
       </Stack>
+      <Stack direction="horizontal" gap="2" className="mt-4 mb-4">
       <Button variant="primary" onClick={() => setShowAddBudgetButton(true)}>
             Add Budget
           </Button>
@@ -67,8 +99,9 @@ function Home() {
             Add Expense
           </Button>
       
-            
-        </div>
+          </Stack>
+        
+        
           <AddBudgetButton
           show={showAddBudgetButton}
           handleClose={() => setShowAddBudgetButton(false)}
@@ -82,8 +115,17 @@ function Home() {
               budgetId= {viewExpensesModalBudgetId}
               handleClose={() => setViewExpensesModalBudgetId()}
         />
+      <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "1.5rem",
+            
+        
 
-        <Container>
+          }}
+        >
+      
         {Array.isArray(Budgets)
         ? Budgets.map(Budget => (
           <>
@@ -96,17 +138,20 @@ function Home() {
           onAddExpenseClick={() => setShowAddExpenseButton(true)}
           onViewExpensesClick={() => setViewExpensesModalBudgetId(Budget.budget_id)}
           
+          
         />
+      
         
         </>
           ))
         : null}
+        <BudgetCard amount={total_amount} name="Total" gray max={total_max} hideButtons />
 
 
 
        
 
-
+        </div>
         
         </Container>
             

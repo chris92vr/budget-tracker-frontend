@@ -9,6 +9,8 @@ export default function BudgetCard({
   hideButtons,
   onAddExpenseClick,
   onViewExpensesClick,
+  
+
 }) {
   const classNames = []
   if (amount > max) {
@@ -38,6 +40,7 @@ export default function BudgetCard({
             min={0}
             max={max}
             now={amount}
+           
           />
         )}
         {!hideButtons && (
@@ -65,3 +68,4 @@ function getProgressBarVariant(amount, max) {
   if (ratio < 0.75) return "warning"
   return "danger"
 }
+
