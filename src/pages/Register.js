@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function redirectToHome() {
-    window.location.href = '/';
+    window.location.href = '/budget-tracker-frontend';
 }
 
 const Register = () => {

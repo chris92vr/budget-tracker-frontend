@@ -6,8 +6,8 @@ import Nav from './components/Nav';
 import Register from './pages/Register';
 import Cookies from 'js-cookie';
 import Profile from './pages/Profile';
-import Container from "react-bootstrap/Container"
 
+import { HashRouter } from 'react-router-dom';
 
 
 function isLoggedIn() {
@@ -18,7 +18,7 @@ function isLoggedIn() {
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter basename="/">
         <Nav />
 
 
@@ -29,7 +29,7 @@ function App() {
      <Route path="/register" element={<Register />}/>
      </Routes>
 
-      {isLoggedIn() ? <> <Routes> <Route path="/budget-tracker-frontend" element={<Home />}/>
+      {isLoggedIn() ? <> <Routes> <Route path="/" element={<Home />}/>
      
      
      <Route path="/profile" element={<Profile />}/> </Routes> </> :  <p>Please Log in or register</p>}
@@ -37,7 +37,7 @@ function App() {
       
       </main>
     
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

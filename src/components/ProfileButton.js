@@ -24,7 +24,7 @@ const ProfileButton = () => {
 
         response.then(res => {  
             if (res.status === 200) {
-                navigate('/profile');
+                navigate('/budget-tracker-frontend/profile');
             } else {
                 alert('Invalid username or password');
             }
