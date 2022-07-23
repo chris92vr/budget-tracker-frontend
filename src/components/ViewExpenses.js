@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+
 import { Modal, Button, Stack } from "react-bootstrap"
 import { currencyFormatter } from "../utils"
 
@@ -48,21 +48,20 @@ function deleteExpense(expenseId) {
 
 function ViewExpenses ({ budgetId, handleClose}) {
   const [expenses, setExpenses] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const user = await fetch(`https://budget-tracker-go-backend.herokuapp.com/getexpenses?budget_id=${budgetId}`, { mode: 'no cors' });
       if (user.status === 200 && user != null) {
         const json = await user.json();
         setExpenses(json);
-        setLoading(false);
+        
       }
       
       
     }
-    const result = fetchData()
-      .catch(console.error);;
+    fetchData();
+      
   }, [budgetId])
 
   return (

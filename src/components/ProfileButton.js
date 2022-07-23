@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faUser } from '@fortawesome/fontawesome-free-solid'
+
 import { useNavigate } from 'react-router-dom';
 
 

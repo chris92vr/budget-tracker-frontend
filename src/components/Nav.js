@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import LogoutButton from "./Logoutbutton";
 import ProfileButton from "./ProfileButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faUser, faSignInAlt, faUserPlus } from '@fortawesome/fontawesome-free-solid'
+
+import { faHome, faSignInAlt, faUserPlus } from '@fortawesome/fontawesome-free-solid'
 import Cookies from 'js-cookie';
 
 

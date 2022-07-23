@@ -67,10 +67,8 @@ useEffect(() => {
 
     }
   
-    // call the function
-    const result = fetchData()
-      // make sure to catch any error
-      .catch(console.error);;
+    // call the async function
+    fetchData();
       
       
   }, [])
