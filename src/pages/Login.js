@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 
 function redirectToHome() {
-  window.location.href = '/';
+  window.location.href = '/budget-tracker-frontend';
 }
 
 
@@ -23,14 +23,16 @@ const Login = () => {
         
        
       method: 'POST',
-      
+
           headers: {'Content-Type': 'application/json'},
-          
+          mode: 'cors', accessControlAllowOrigin: '*',
+
           credentials: 'include',
           body: JSON.stringify({
               username,
               password
           })
+
       });
         response.then(res => {
             if (res.status === 200) {

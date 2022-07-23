@@ -15,7 +15,8 @@ const LogoutButton = () => {
         e.preventDefault();
   
         const response = fetch('https://budget-tracker-go-backend.herokuapp.com/logout', {
-          
+            mode: 'cors', accessControlAllowOrigin: '*',
+            
          
         method: 'POST',
         

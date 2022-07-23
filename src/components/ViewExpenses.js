@@ -9,6 +9,7 @@ import { currencyFormatter } from "../utils"
 function deleteBudget(budgetId) {
   fetch(`https://budget-tracker-go-backend.herokuapp.com/deletebudget?budget_id=${budgetId}`, {
     method: 'DELETE',
+    mode: 'cors', accessControlAllowOrigin: '*',
     headers: {
       'Content-Type': 'application/json',
       
@@ -27,6 +28,7 @@ function deleteBudget(budgetId) {
 function deleteExpense(expenseId) {
   fetch(`https://budget-tracker-go-backend.herokuapp.com/deleteexpense?expense_id=${expenseId}`, {
     method: 'DELETE',
+    mode: 'cors', accessControlAllowOrigin: '*',
     headers: {
       'Content-Type': 'application/json',
       
@@ -50,7 +52,7 @@ function ViewExpenses ({ budgetId, handleClose}) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const user = await fetch(`https://budget-tracker-go-backend.herokuapp.com/getexpenses?budget_id=${budgetId}`);
+      const user = await fetch(`https://budget-tracker-go-backend.herokuapp.com/getexpenses?budget_id=${budgetId}`, { mode: 'no cors' });
       if (user.status === 200 && user != null) {
         const json = await user.json();
         setExpenses(json);

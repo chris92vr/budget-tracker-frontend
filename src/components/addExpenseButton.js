@@ -16,7 +16,8 @@ export default function AddExpenseButton({ show, handleClose, defaultBudgetId })
 
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-         
+    credentials: 'include',
+    mode: 'cors', accessControlAllowOrigin: '*',
     body: JSON.stringify({
             description,
             amount,
@@ -54,7 +55,7 @@ useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/getbudgets');
+      const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/getbudgets').mode('cors');
       // convert the data to json
       const json = await user.json();
 

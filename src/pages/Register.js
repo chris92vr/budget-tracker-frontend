@@ -15,7 +15,8 @@ const Register = () => {
         e.preventDefault();
 
         const response = fetch('https://budget-tracker-go-backend.herokuapp.com/signup', {
-   
+        mode: 'cors', accessControlAllowOrigin: '*',
+        accessControlAllowOrigin: '*',
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
              

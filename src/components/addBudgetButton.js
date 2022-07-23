@@ -11,8 +11,7 @@ export default function AddBudgetButton({ show, handleClose }) {
     e.preventDefault();
 
     const response = fetch('https://budget-tracker-go-backend.herokuapp.com/addbudget', {
-
-    method: 'POST',
+    mode: 'cors', accessControlAllowOrigin: '*',
     headers: {'Content-Type': 'application/json'},
          
     body: JSON.stringify({

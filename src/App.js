@@ -29,7 +29,7 @@ function App() {
      <Route path="/register" element={<Register />}/>
      </Routes>
 
-      {isLoggedIn() ? <> <Routes> <Route path="/" element={<Home />}/>
+      {isLoggedIn() ? <> <Routes> <Route path="/budget-tracker-frontend" element={<Home />}/>
      
      
      <Route path="/profile" element={<Profile />}/> </Routes> </> :  <p>Please Log in or register</p>}

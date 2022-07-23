@@ -33,7 +33,7 @@ function Home() {
         // declare the async data fetching function
         const fetchData = async () => {
           // get the data from the api
-          const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/getbudgets');
+          const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/getbudgets').mode('cors').accessControlAllowOrigin('*');
           // convert the data to json
           const json = await user.json();
 
@@ -64,7 +64,7 @@ function Home() {
             // declare the async data fetching function
             const fetchData = async () => {
               // get the data from the api
-              const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/totalBudget');
+              const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/totalBudget').mode('cors').accessControlAllowOrigin('*');
               // convert the data to json
               const json = await user.json();
           

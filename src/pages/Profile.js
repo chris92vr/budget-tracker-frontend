@@ -16,10 +16,10 @@ const UserProfile = () => {
         // declare the async data fetching function
         const fetchData = async () => {
           // get the data from the api
-          const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/profile');
+          const user = await fetch('https://budget-tracker-go-backend.herokuapp.com/profile').mode('cors').accessControlAllowOrigin('*');
           // convert the data to json
           const json = await user.json();
-      
+          
           // set state with the result
           setUser(json.username);
           setEmail(json.email);

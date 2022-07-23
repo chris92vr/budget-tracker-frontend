@@ -15,7 +15,7 @@ const ProfileButton = () => {
         e.preventDefault();
 
         const response = fetch('https://budget-tracker-go-backend.herokuapp.com/profile', {
-
+            mode: 'cors', accessControlAllowOrigin: '*',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
