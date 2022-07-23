@@ -1,7 +1,7 @@
 {
     "name": "budget-tracker-frontend",
     "version": "0.1.0",
-    "homepage": "https://chris92vr.github.io/budget-tracker-frontend",
+    "homepage": "",
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
