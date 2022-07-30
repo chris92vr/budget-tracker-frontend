@@ -24,9 +24,7 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(
-        'https://budget-tracker-go-backend.herokuapp.com/getbudgets'
-      );
+      const user = await fetch('http://localhost:8000/getbudgets');
       // convert the data to json
       const json = await user.json();
 
@@ -45,9 +43,7 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(
-        'https://budget-tracker-go-backend.herokuapp.com/totalBudget'
-      );
+      const user = await fetch('http://localhost:8000/totalBudget');
 
       // convert the data to json
       const json = await user.json();

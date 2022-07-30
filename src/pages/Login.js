@@ -11,14 +11,13 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('https://budg-track-new.herokuapp.com/signin', {
+    const response = fetch('http://localhost:8000/signin', {
       method: 'POST',
 
       headers: { 'Content-Type': 'application/json' },
       mode: 'cors',
       accessControlAllowOrigin: '*',
 
-      credentials: 'not-include',
       body: JSON.stringify({
         username,
         password,
