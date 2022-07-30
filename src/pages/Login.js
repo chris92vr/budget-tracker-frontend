@@ -18,7 +18,7 @@ const Login = () => {
       mode: 'cors',
       accessControlAllowOrigin: '*',
 
-      credentials: 'include',
+      credentials: 'not-include',
       body: JSON.stringify({
         username,
         password,
