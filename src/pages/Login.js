@@ -15,8 +15,7 @@ const Login = () => {
       method: 'POST',
 
       headers: { 'Content-Type': 'application/json' },
-      mode: 'cors',
-      accessControlAllowOrigin: '*',
+      mode: 'no-cors',
 
       body: JSON.stringify({
         username,
