@@ -31,14 +31,6 @@ const ProfileButton = () => {
 
     response
       .then((res) => {
-        res.header(
-          'Access-Control-Allow-Origin',
-          'https://budget-tracker-frontend-delta.vercel.app'
-        );
-        res.header(
-          'Access-Control-Allow-Headers',
-          'Origin, X-Requested-With, Content-Type, Accept'
-        );
         if (res.status === 200) {
           navigate('/profile');
         } else {
