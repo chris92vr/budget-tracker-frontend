@@ -18,11 +18,13 @@ export default function AddExpenseButton({
       'https://budgeet-tracker-api.herokuapp.com/expense',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         mode: 'cors',
-        AccessControlAllowOrigin: 'http://localhost:3000',
-        AccessControlAllowCredentials: 'true',
+        AccessControlAllowOrigin:
+          'https://budget-tracker-frontend-delta.vercel.app',
+        AccessControlAllowCredentials: 'include',
+        SameSite: 'Secure',
+        Secure: 'true',
         body: JSON.stringify({
           description,
           amount,
