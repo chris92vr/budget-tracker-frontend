@@ -12,7 +12,7 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:3000/login', {
+    const response = fetch('http://localhost:8000/login', {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
