@@ -18,18 +18,21 @@ const Register = () => {
       return;
     }
 
-    const response = fetch('http://localhost:8000/register', {
-      method: 'POST',
-      credentials: 'include',
-      mode: 'cors',
-      AccessControlAllowOrigin: 'http://localhost:3000',
-      AccessControlAllowCredentials: 'true',
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-      }),
-    });
+    const response = fetch(
+      'https://budgeet-tracker-api.herokuapp.com/register',
+      {
+        method: 'POST',
+        credentials: 'include',
+        mode: 'cors',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'true',
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      }
+    );
     response
       .then((res) => {
         console.log('response status: ' + res.status);

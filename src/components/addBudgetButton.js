@@ -8,7 +8,7 @@ export default function AddBudgetButton({ show, handleClose }) {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/budget', {
+    const response = fetch('https://budgeet-tracker-api.herokuapp.com/budget', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

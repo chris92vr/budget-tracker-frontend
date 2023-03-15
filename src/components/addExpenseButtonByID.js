@@ -10,19 +10,22 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/expense', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      mode: 'cors',
-      AccessControlAllowOrigin: 'http://localhost:3000',
-      AccessControlAllowCredentials: 'true',
-      body: JSON.stringify({
-        description,
-        amount,
-        budget_id: budgetId,
-      }),
-    });
+    const response = fetch(
+      'https://budgeet-tracker-api.herokuapp.com/expense',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        mode: 'cors',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'true',
+        body: JSON.stringify({
+          description,
+          amount,
+          budget_id: budgetId,
+        }),
+      }
+    );
     if (response != null) {
       response
         .then((res) => {
@@ -47,13 +50,16 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/getBudgets', {
-        method: 'GET',
-        credentials: 'include',
-        mode: 'cors',
-        AccessControlAllowOrigin: 'http://localhost:3000',
-        AccessControlAllowCredentials: 'true',
-      });
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/getBudgets',
+        {
+          method: 'GET',
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowCredentials: 'true',
+        }
+      );
       // convert the data to json
       const json = await user.json();
 

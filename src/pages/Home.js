@@ -27,13 +27,16 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/getBudgets', {
-        credentials: 'include',
-        mode: 'cors',
-        AccessControlAllowOrigin: 'http://localhost:3000',
-        AccessControlAllowCredentials: 'true',
-        method: 'GET',
-      });
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/getBudgets',
+        {
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowCredentials: 'true',
+          method: 'GET',
+        }
+      );
 
       // convert the array to json
       const json = await user.json();
@@ -58,13 +61,16 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/totalBudget', {
-        credentials: 'include',
-        mode: 'cors',
-        AccessControlAllowOrigin: 'http://localhost:3000',
-        AccessControlAllowCredentials: 'true',
-        method: 'GET',
-      });
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/totalBudget',
+        {
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowCredentials: 'true',
+          method: 'GET',
+        }
+      );
 
       // convert the data to json
       const json = await user.json();
@@ -159,7 +165,7 @@ function Home() {
                         )
                       ) {
                         fetch(
-                          'http://localhost:8000/deleteBudget?budget_id=' +
+                          'https://budgeet-tracker-api.herokuapp.com/deleteBudget?budget_id=' +
                             Budget.budget_id,
                           {
                             credentials: 'include',

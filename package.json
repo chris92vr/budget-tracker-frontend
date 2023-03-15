@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "",
   "private": true,
-  "proxy": "http://localhost:8000/",
+  "proxy": "https://budgeet-tracker-api.herokuapp.com/",
   "dependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -24,8 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-    "node": "18.3.0",
-    "npm": "8.13.2"
+    "node": "19.6.1",
+    "npm": "9.5.0"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -12,12 +12,12 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/login', {
+    const response = fetch('https://budgeet-tracker-api.herokuapp.com/login', {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
       AccessControlAllowOrigin:
-        'http://budget-tracker-frontend-delta.vercel.app',
+        'https://budget-tracker-frontend-delta.vercel.app',
       AccessControlAllowCredentials: 'true',
 
       body: JSON.stringify({

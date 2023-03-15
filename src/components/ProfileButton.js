@@ -8,14 +8,17 @@ const ProfileButton = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/protected', {
-      credentials: 'include',
-      mode: 'cors',
-      AccessControlAllowOrigin: 'http://localhost:3000',
-      AccessControlAllowCredentials: 'true',
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const response = fetch(
+      'https://budgeet-tracker-api.herokuapp.com/protected',
+      {
+        credentials: 'include',
+        mode: 'cors',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'true',
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
 
     response
       .then((res) => {

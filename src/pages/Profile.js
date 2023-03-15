@@ -8,13 +8,16 @@ const UserProfile = () => {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/protected', {
-        credentials: 'include',
-        mode: 'cors',
-        AccessControlAllowOrigin: 'http://localhost:3000',
-        AccessControlAllowCredentials: 'true',
-        method: 'GET',
-      });
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/protected',
+        {
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowCredentials: 'true',
+          method: 'GET',
+        }
+      );
 
       // convert the data to json
       const json = await user.json();

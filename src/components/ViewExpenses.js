@@ -4,16 +4,19 @@ import { Modal, Button, Stack } from 'react-bootstrap';
 import { currencyFormatter, formatDate } from '../utils';
 
 function deleteBudget(budgetId) {
-  fetch(`http://localhost:8000/deleteBudget?budget_id=${budgetId}`, {
-    method: 'DELETE',
-    credentials: 'include',
-    mode: 'cors',
-    AccessControlAllowOrigin: 'http://localhost:3000',
-    AccessControlAllowCredentials: 'true',
-    body: JSON.stringify({
-      budget_id: budgetId,
-    }),
-  })
+  fetch(
+    `https://budgeet-tracker-api.herokuapp.com/deleteBudget?budget_id=${budgetId}`,
+    {
+      method: 'DELETE',
+      credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
+      body: JSON.stringify({
+        budget_id: budgetId,
+      }),
+    }
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -25,19 +28,22 @@ function deleteBudget(budgetId) {
 }
 
 function deleteExpense(expenseId) {
-  fetch(`http://localhost:8000/deleteExpense?expense_id=${expenseId}`, {
-    method: 'DELETE',
-    credentials: 'include',
-    mode: 'cors',
-    AccessControlAllowOrigin: 'http://localhost:3000',
-    AccessControlAllowCredentials: 'true',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      expense_id: expenseId,
-    }),
-  })
+  fetch(
+    `https://budgeet-tracker-api.herokuapp.com/deleteExpense?expense_id=${expenseId}`,
+    {
+      method: 'DELETE',
+      credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        expense_id: expenseId,
+      }),
+    }
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -53,7 +59,7 @@ function ViewExpenses({ budgetId, handleClose }) {
   useEffect(() => {
     const fetchData = async () => {
       const user = await fetch(
-        `http://localhost:8000/getExpense?budget_id=${budgetId}`,
+        `https://budgeet-tracker-api.herokuapp.com/getExpense?budget_id=${budgetId}`,
         {
           method: 'GET',
           credentials: 'include',

@@ -5,7 +5,7 @@ const LogoutButton = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/logout', {
+    const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
       credentials: 'include',
       mode: 'cors',
       AccessControlAllowOrigin: 'http://localhost:3000',
