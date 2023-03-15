@@ -12,7 +12,7 @@ const Login = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch(process.env.REACT_APP_API_URL + '/login', {
+    const response = fetch('http://localhost:3000/login', {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
@@ -36,16 +36,6 @@ const Login = () => {
 
         if (res.status === 200) {
           // set coookie from response header
-          cookies.set('session_token', res.headers.get('session_token'), {
-            path: '/',
-            maxAge: 86400,
-            sameSite: 'strict',
-            secure: true,
-            httpOnly: true,
-          });
-
-          console.log('response status: ' + res.status);
-          console.log('cookies: ' + cookies.get('session_token'));
           redirectToHome();
         } else {
           console.log('response status: ' + res.status);

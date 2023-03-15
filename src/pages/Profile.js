@@ -8,7 +8,7 @@ const UserProfile = () => {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(process.env.REACT_APP_API_URL + '/protected', {
+      const user = await fetch('http://localhost:8000/protected', {
         credentials: 'include',
         mode: 'cors',
         AccessControlAllowOrigin: 'http://localhost:3000',

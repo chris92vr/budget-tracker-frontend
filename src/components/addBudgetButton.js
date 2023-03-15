@@ -8,7 +8,7 @@ export default function AddBudgetButton({ show, handleClose }) {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch(process.env.REACT_APP_API_URL + '/budget', {
+    const response = fetch('http://localhost:8000/budget', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

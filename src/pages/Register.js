@@ -18,7 +18,7 @@ const Register = () => {
       return;
     }
 
-    const response = fetch(process.env.REACT_APP_API_URL + '/register', {
+    const response = fetch('http://localhost:8000/register', {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',

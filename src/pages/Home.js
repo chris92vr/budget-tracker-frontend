@@ -27,7 +27,7 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(process.env.REACT_APP_API_URL + '/getBudgets', {
+      const user = await fetch('http://localhost:8000/getBudgets', {
         credentials: 'include',
         mode: 'cors',
         AccessControlAllowOrigin: 'http://localhost:3000',
@@ -58,7 +58,7 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(process.env.REACT_APP_API_URL + '/totalBudget', {
+      const user = await fetch('http://localhost:8000/totalBudget', {
         credentials: 'include',
         mode: 'cors',
         AccessControlAllowOrigin: 'http://localhost:3000',
@@ -159,8 +159,7 @@ function Home() {
                         )
                       ) {
                         fetch(
-                          process.env.REACT_APP_API_URL +
-                            '/deleteBudget?budget_id=' +
+                          'http://localhost:8000/deleteBudget?budget_id=' +
                             Budget.budget_id,
                           {
                             credentials: 'include',

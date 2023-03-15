@@ -14,7 +14,7 @@ export default function AddExpenseButton({
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch(process.env.REACT_APP_API_URL + '/expense', {
+    const response = fetch('http://localhost:8000/expense', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -51,7 +51,7 @@ export default function AddExpenseButton({
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch(process.env.REACT_APP_API_URL + '/getBudgets', {
+      const user = await fetch('http://localhost:8000/getBudgets', {
         method: 'GET',
         credentials: 'include',
         mode: 'cors',
