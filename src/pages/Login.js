@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Cookies from 'universal-cookie';
+
 function redirectToHome() {
   window.location.href = '/home';
 }
@@ -7,7 +7,6 @@ function redirectToHome() {
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const cookies = new Cookies();
 
   const submit = (e) => {
     e.preventDefault();
@@ -31,11 +30,6 @@ const Login = () => {
     response
       .then((res) => {
         console.log('response status: ' + res.status);
-
-        console.log('cookies: ' + cookies.get('session_token'));
-        // get response header
-        console.log('response header: ' + res.headers.get('session_token'));
-        console.log('response header: ' + res.headers.get('Set-Cookie'));
 
         if (res.status === 200) {
           // set coookie from response header

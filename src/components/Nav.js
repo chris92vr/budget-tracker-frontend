@@ -9,10 +9,8 @@ import {
   faSignInAlt,
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
-import Cookies from 'js-cookie';
 
 const Nav = () => {
-  console.log('cookies', Cookies.get('session_token'));
   return (
     <nav
       className="navbar navbar-expand-lg bg-light rounded"
