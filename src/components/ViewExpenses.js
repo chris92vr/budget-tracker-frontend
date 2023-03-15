@@ -1,44 +1,50 @@
 import React, { useEffect, useState } from 'react';
 
 import { Modal, Button, Stack } from 'react-bootstrap';
-import { currencyFormatter } from '../utils';
+import { currencyFormatter, formatDate } from '../utils';
 
 function deleteBudget(budgetId) {
-  fetch(
-    `https://budget-tracker-go-backend.herokuapp.com/deletebudget?budget_id=${budgetId}`,
-    {
-      method: 'DELETE',
-      mode: 'cors',
-      accessControlAllowOrigin: '*',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+  fetch(`http://localhost:8000/deleteBudget?budget_id=${budgetId}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    mode: 'cors',
+    AccessControlAllowOrigin: 'http://localhost:3000',
+    AccessControlAllowCredentials: 'true',
+    body: JSON.stringify({
+      budget_id: budgetId,
+    }),
+  })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      // reload the page
+      window.location.reload(false);
     })
     .catch((err) => console.log(err));
+  window.location.reload(false);
 }
 
 function deleteExpense(expenseId) {
-  fetch(
-    `https://budget-tracker-go-backend.herokuapp.com/deleteexpense?expense_id=${expenseId}`,
-    {
-      method: 'DELETE',
-      mode: 'cors',
-      accessControlAllowOrigin: '*',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+  fetch(`http://localhost:8000/deleteExpense?expense_id=${expenseId}`, {
+    method: 'DELETE',
+    credentials: 'include',
+    mode: 'cors',
+    AccessControlAllowOrigin: 'http://localhost:3000',
+    AccessControlAllowCredentials: 'true',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      expense_id: expenseId,
+    }),
+  })
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      window.location.reload(false);
     })
     .catch((err) => console.log(err));
+  window.location.reload(false);
 }
 
 function ViewExpenses({ budgetId, handleClose }) {
@@ -47,10 +53,18 @@ function ViewExpenses({ budgetId, handleClose }) {
   useEffect(() => {
     const fetchData = async () => {
       const user = await fetch(
-        `https://budget-tracker-go-backend.herokuapp.com/getexpenses?budget_id=${budgetId}`
+        `http://localhost:8000/getExpense?budget_id=${budgetId}`,
+        {
+          method: 'GET',
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowCredentials: 'true',
+        }
       );
       if (user.status === 200 && user != null) {
         const json = await user.json();
+
         setExpenses(json);
       }
     };
@@ -82,7 +96,7 @@ function ViewExpenses({ budgetId, handleClose }) {
             ? expenses.map((expense) => (
                 <Stack direction="horizontal" gap="2" key={expense.expense_id}>
                   <div className="me-auto fs-4">
-                    {expense.description} - {expense.created_at}
+                    {expense.description} - {formatDate(expense.created_at)}
                   </div>
                   <div className="fs-5">
                     {currencyFormatter.format(expense.amount)}

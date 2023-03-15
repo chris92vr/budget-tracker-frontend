@@ -1,14 +1,10 @@
 import { Form, Modal, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
-export default function AddExpenseButton({
-  show,
-  handleClose,
-  defaultBudgetId,
-}) {
+export default function AddExpenseButton({ handleClose, budgetId }) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const [budget_id, setBudget_id] = useState('');
+
   const [budgets, setBudgets] = useState([]);
 
   const submit = (e) => {
@@ -24,7 +20,7 @@ export default function AddExpenseButton({
       body: JSON.stringify({
         description,
         amount,
-        budget_id,
+        budget_id: budgetId,
       }),
     });
     if (response != null) {
@@ -70,7 +66,7 @@ export default function AddExpenseButton({
   }, []);
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={budgetId != null} onHide={handleClose}>
       <Form onSubmit={submit}>
         <Modal.Header closeButton>
           <Modal.Title>New Expense</Modal.Title>
@@ -96,11 +92,7 @@ export default function AddExpenseButton({
           </Form.Group>
           <Form.Group className="mb-3" controlId="budget_id">
             <Form.Label>Budget</Form.Label>
-            <Form.Select
-              defaultValue={defaultBudgetId}
-              onChange={(e) => setBudget_id(e.target.value)}
-              required
-            >
+            <Form.Select defaultValue={budgetId} required>
               <option value="">Select a budget</option>
               {Array.isArray(budgets)
                 ? budgets.map((budget) => (

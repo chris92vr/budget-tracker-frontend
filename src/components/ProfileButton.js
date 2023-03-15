@@ -8,12 +8,13 @@ const ProfileButton = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/profile', {
-      mode: 'cors',
-      accessControlAllowOrigin: '*',
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const response = fetch(process.env.REACT_APP_API_URL + '/protected', {
       credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     });
 
     response

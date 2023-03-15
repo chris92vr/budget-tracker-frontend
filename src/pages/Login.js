@@ -1,46 +1,71 @@
 import React, { useState } from 'react';
-
+import Cookies from 'universal-cookie';
 function redirectToHome() {
-  window.location.href = '/budget-tracker-frontend/';
+  window.location.href = '/home';
 }
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const cookies = new Cookies();
 
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/signin', {
+    const response = fetch(process.env.REACT_APP_API_URL + '/login', {
       method: 'POST',
-
-      headers: { 'Content-Type': 'application/json' },
-      mode: 'no-cors',
+      credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
 
       body: JSON.stringify({
         username,
         password,
       }),
     });
+
     response
       .then((res) => {
+        console.log('response status: ' + res.status);
+
+        console.log('cookies: ' + cookies.get('session_token'));
+        // get response header
+        console.log('response header: ' + res.headers.get('session_token'));
+        console.log('response header: ' + res.headers.get('Set-Cookie'));
+
         if (res.status === 200) {
+          // set coookie from response header
+          cookies.set('session_token', res.headers.get('session_token'), {
+            path: '/',
+            maxAge: 86400,
+            sameSite: 'strict',
+            secure: true,
+            httpOnly: true,
+          });
+
+          console.log('response status: ' + res.status);
+          console.log('cookies: ' + cookies.get('session_token'));
           redirectToHome();
         } else {
-          alert('Invalid username or password');
+          console.log('response status: ' + res.status);
+          // set error message in label tag with class error
+          document.querySelector('.error').innerHTML =
+            'Invalid username or password!';
         }
       })
       .catch((err) => {
-        alert('Invalid username or password');
+        console.log(err);
       });
   };
+
   return (
     <div className="form-signin">
       <form
         onSubmit={submit}
         className="border border-primary m-5 p-3 border-2 rounded-end"
       >
-        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+        <h1 className="h3 mb-3 fw-normal">Sign in</h1>
         <input
           type="text"
           className="form-control w-30"
@@ -56,6 +81,7 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
+        <label className="error"></label>
 
         <button className="w-30 mt-3 mb-2 btn btn-lg btn-primary" type="submit">
           Sign in

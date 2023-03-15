@@ -5,15 +5,15 @@ const LogoutButton = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('http://localhost:8000/logout', {
+    const response = fetch(process.env.REACT_APP_API_URL + '/logout', {
+      credentials: 'include',
       mode: 'cors',
-      accessControlAllowOrigin: '*',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
 
       method: 'POST',
 
       headers: { 'Content-Type': 'application/json' },
-
-      credentials: 'include',
     });
 
     response

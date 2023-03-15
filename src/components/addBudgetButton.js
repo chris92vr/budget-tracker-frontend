@@ -1,47 +1,44 @@
-import { Form, Modal, Button } from "react-bootstrap"
-import { useState } from "react"
-
+import { Form, Modal, Button } from 'react-bootstrap';
+import { useState } from 'react';
 
 export default function AddBudgetButton({ show, handleClose }) {
-    const [name, setName] = useState('');
-    const [max, setMax] = useState('');
-    
- 
-  const submit = (e) =>  {
+  const [name, setName] = useState('');
+  const [max, setMax] = useState('');
+
+  const submit = (e) => {
     e.preventDefault();
 
-    const response = fetch('https://budget-tracker-go-backend.herokuapp.com/addbudget', {
-    mode: 'cors', accessControlAllowOrigin: '*',
-    headers: {'Content-Type': 'application/json'},
-         
-    body: JSON.stringify({
-            
-            name,
-            max,
-           
-            
-        }),
-    
-    
+    const response = fetch(process.env.REACT_APP_API_URL + '/budget', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowCredentials: 'true',
+
+      body: JSON.stringify({
+        name,
+        max,
+      }),
     });
-    
-    response.then(res => {
-        if (res.status === 200) {
+    if (response != null) {
+      response
+        .then((res) => {
+          if (res.status === 200) {
+            res.json().then((data) => {
+              console.log(data);
+            });
             window.location.reload(false);
             handleClose();
-        } else {
-            alert('Invalid username or password');
-        }
-
-    }   ).catch(err => {
-        alert('Invalid username or password');
+          } else {
+            console.log('status not 200', res.status);
+          }
+        })
+        .catch((err) => {
+          console.log('status not 200', err);
+        });
     }
-    );
-    
-
-    
-    
-}
+  };
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -52,12 +49,16 @@ export default function AddBudgetButton({ show, handleClose }) {
         <Modal.Body>
           <Form.Group className="mb-3" controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control onChange={(e) => setName(e.target.value)}  type="text" required />
+            <Form.Control
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              required
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="max">
             <Form.Label>Maximum Spending</Form.Label>
             <Form.Control
-              onChange={(e) => setMax(e.target.value)} 
+              onChange={(e) => setMax(e.target.value)}
               type="number"
               required
               min={0}
@@ -72,5 +73,5 @@ export default function AddBudgetButton({ show, handleClose }) {
         </Modal.Body>
       </Form>
     </Modal>
-  )
+  );
 }

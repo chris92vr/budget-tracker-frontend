@@ -4,13 +4,17 @@ import Home from './pages/Home';
 import './App.css';
 import Nav from './components/Nav';
 import Register from './pages/Register';
-import Cookies from 'js-cookie';
 import Profile from './pages/Profile';
+import { getSessionCookie } from './utils';
 
 import { HashRouter } from 'react-router-dom';
 
 function isLoggedIn() {
-  return Cookies.get('session_token') !== undefined;
+  const token = getSessionCookie();
+  if (token) {
+    return true;
+  }
+  return false;
 }
 
 function App() {

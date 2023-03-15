@@ -5,6 +5,7 @@ import CurrentDate from '../components/CurrentDate';
 import { useState, useEffect } from 'react';
 import { Button, Stack, Container } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
+import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
 
 function Home() {
@@ -12,29 +13,43 @@ function Home() {
   const [showAddExpenseButton, setShowAddExpenseButton] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
+  const [addExpenseButtonBudgetId, setAddExpenseButtonBudgetId] = useState();
+  const [addExpenseButtonByBudgetId, setAddExpenseButtonByBudgetId] =
+    useState();
 
   const [Budgets, setBudgets] = useState([]);
+  // URL from .env file (see .env.example)
+  const API_URL = process.env.REACT_APP_API_URL;
+  console.log('TEST', API_URL);
 
-  function openAddExpenseModal(budgetId) {
-    setShowAddExpenseButton(true);
-    setAddExpenseModalBudgetId(budgetId);
-  }
-
+  console.log('TEST', process.env.TEST_API_URL);
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/getbudgets');
-      // convert the data to json
+      const user = await fetch(process.env.REACT_APP_API_URL + '/getBudgets', {
+        credentials: 'include',
+        mode: 'cors',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'true',
+        method: 'GET',
+      });
+
+      // convert the array to json
       const json = await user.json();
 
-      setBudgets(json);
       // set state with the result
+      setBudgets(json);
     };
 
     // call the function
-    fetchData();
+    const result = fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+    console.log(result);
   }, []);
+
+  console.log('fetch data', Budgets);
 
   const [total_max, setTotalMax] = useState('');
   const [total_amount, setTotalAmount] = useState('');
@@ -43,14 +58,20 @@ function Home() {
     // declare the async data fetching function
     const fetchData = async () => {
       // get the data from the api
-      const user = await fetch('http://localhost:8000/totalBudget');
+      const user = await fetch(process.env.REACT_APP_API_URL + '/totalBudget', {
+        credentials: 'include',
+        mode: 'cors',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'true',
+        method: 'GET',
+      });
 
       // convert the data to json
       const json = await user.json();
 
       // set state with the result
       setTotalMax(json.total_max);
-      setTotalAmount(json.total_amount);
+      setTotalAmount(json.total_budget);
     };
 
     // call the function
@@ -74,9 +95,20 @@ function Home() {
           >
             Add Budget
           </Button>
-          <Button variant="outline-primary" onClick={openAddExpenseModal}>
-            Add Expense
-          </Button>
+          {total_max ? (
+            <h3 className=" me-auto">
+              <Button
+                variant="primary"
+                onClick={() => setAddExpenseButtonByBudgetId('all')}
+              >
+                Add Expense
+              </Button>
+            </h3>
+          ) : (
+            <h3 className=" me-auto">
+              No Budgets Yet. Add a Budget to get started.
+            </h3>
+          )}
         </Stack>
 
         <AddBudgetButton
@@ -86,12 +118,19 @@ function Home() {
         <AddExpenseButton
           show={showAddExpenseButton}
           defaultBudgetId={addExpenseModalBudgetId}
+          budgetId={addExpenseButtonBudgetId}
           handleClose={() => setShowAddExpenseButton(false)}
         />
         <ViewExpenses
           budgetId={viewExpensesModalBudgetId}
           handleClose={() => setViewExpensesModalBudgetId()}
         />
+
+        <AddExpenseButtonBy
+          budgetId={addExpenseButtonByBudgetId}
+          handleClose={() => setAddExpenseButtonByBudgetId()}
+        />
+
         <div
           style={{
             display: 'grid',
@@ -107,10 +146,48 @@ function Home() {
                     name={Budget.name}
                     amount={Budget.totalAmount}
                     max={Budget.max}
-                    onAddExpenseClick={() => setShowAddExpenseButton(true)}
+                    onAddExpenseClick={() =>
+                      setAddExpenseButtonByBudgetId(Budget.budget_id)
+                    }
                     onViewExpensesClick={() =>
                       setViewExpensesModalBudgetId(Budget.budget_id)
                     }
+                    onDeleteClick={() => {
+                      if (
+                        window.confirm(
+                          'Are you sure you want to delete this budget?'
+                        )
+                      ) {
+                        fetch(
+                          process.env.REACT_APP_API_URL +
+                            '/deleteBudget?budget_id=' +
+                            Budget.budget_id,
+                          {
+                            credentials: 'include',
+                            mode: 'cors',
+                            AccessControlAllowOrigin: 'http://localhost:3000',
+                            AccessControlAllowCredentials: 'true',
+                            method: 'DELETE',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              budget_id: Budget.budget_id,
+                            }),
+                          }
+                        )
+                          .then((res) => {
+                            if (res.status === 200) {
+                              window.location.reload();
+                            } else {
+                              alert('Error deleting budget');
+                            }
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }
+                    }}
                   />
                 </>
               ))

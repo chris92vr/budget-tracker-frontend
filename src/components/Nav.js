@@ -12,11 +12,15 @@ import {
 import Cookies from 'js-cookie';
 
 function isLoggedIn() {
-  return Cookies.get('session_token') !== undefined;
+  const token = Cookies.get('session_token');
+  if (token) {
+    return true;
+  }
+  return false;
 }
 
 const Nav = () => {
-  console.log(Cookies.get('session_token'));
+  console.log('cookies', Cookies.get('session_token'));
   return (
     <nav
       className="navbar navbar-expand-lg bg-light rounded"
