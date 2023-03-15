@@ -10,8 +10,11 @@ function deleteBudget(budgetId) {
       method: 'DELETE',
       credentials: 'include',
       mode: 'cors',
-      AccessControlAllowOrigin: 'http://localhost:3000',
-      AccessControlAllowCredentials: 'true',
+      AccessControlAllowOrigin:
+        'https://budget-tracker-frontend-delta.vercel.app',
+      AccessControlAllowCredentials: 'include',
+      SameSite: 'Secure',
+      Secure: 'true',
       body: JSON.stringify({
         budget_id: budgetId,
       }),
@@ -34,8 +37,11 @@ function deleteExpense(expenseId) {
       method: 'DELETE',
       credentials: 'include',
       mode: 'cors',
-      AccessControlAllowOrigin: 'http://localhost:3000',
-      AccessControlAllowCredentials: 'true',
+      AccessControlAllowOrigin:
+        'https://budget-tracker-frontend-delta.vercel.app',
+      AccessControlAllowCredentials: 'include',
+      SameSite: 'Secure',
+      Secure: 'true',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -64,8 +70,11 @@ function ViewExpenses({ budgetId, handleClose }) {
           method: 'GET',
           credentials: 'include',
           mode: 'cors',
-          AccessControlAllowOrigin: 'http://localhost:3000',
-          AccessControlAllowCredentials: 'true',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
+          AccessControlAllowCredentials: 'include',
+          SameSite: 'Secure',
+          Secure: 'true',
         }
       );
       if (user.status === 200 && user != null) {
