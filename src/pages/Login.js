@@ -39,7 +39,7 @@ const Login = () => {
 
         if (res.status === 200) {
           // set coookie from response header
-          redirectToHome();
+          //redirectToHome();
         } else {
           console.log('response status: ' + res.status);
           // set error message in label tag with class error
