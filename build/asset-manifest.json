@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/budget-tracker-frontend/static/css/main.ccd71def.css",
-    "main.js": "/budget-tracker-frontend/static/js/main.cd27721d.js",
-    "static/js/787.b30e5c43.chunk.js": "/budget-tracker-frontend/static/js/787.b30e5c43.chunk.js",
-    "index.html": "/budget-tracker-frontend/index.html",
-    "main.ccd71def.css.map": "/budget-tracker-frontend/static/css/main.ccd71def.css.map",
-    "main.cd27721d.js.map": "/budget-tracker-frontend/static/js/main.cd27721d.js.map",
-    "787.b30e5c43.chunk.js.map": "/budget-tracker-frontend/static/js/787.b30e5c43.chunk.js.map"
+    "main.css": "/static/css/main.ccd71def.css",
+    "main.js": "/static/js/main.8608ba3d.js",
+    "static/js/787.b30e5c43.chunk.js": "/static/js/787.b30e5c43.chunk.js",
+    "index.html": "/index.html",
+    "main.ccd71def.css.map": "/static/css/main.ccd71def.css.map",
+    "main.8608ba3d.js.map": "/static/js/main.8608ba3d.js.map",
+    "787.b30e5c43.chunk.js.map": "/static/js/787.b30e5c43.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ccd71def.css",
-    "static/js/main.cd27721d.js"
+    "static/js/main.8608ba3d.js"
   ]
 }
