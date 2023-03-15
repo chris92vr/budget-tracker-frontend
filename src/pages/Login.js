@@ -19,7 +19,7 @@ const Login = () => {
       AccessControlAllowOrigin:
         'https://budget-tracker-frontend-delta.vercel.app',
       AccessControlAllowCredentials: 'include',
-      SameSite: 'None',
+      SameSite: 'Secure',
       Secure: 'true',
 
       body: JSON.stringify({
