@@ -11,14 +11,6 @@ import {
 } from '@fortawesome/fontawesome-free-solid';
 import Cookies from 'js-cookie';
 
-function isLoggedIn() {
-  const token = Cookies.get('session_token');
-  if (token) {
-    return true;
-  }
-  return false;
-}
-
 const Nav = () => {
   console.log('cookies', Cookies.get('session_token'));
   return (
@@ -49,41 +41,38 @@ const Nav = () => {
                 Home <FontAwesomeIcon icon={faHome} />
               </Link>
             </li>
-            {isLoggedIn() ? null : (
-              <>
-                {' '}
-                <li className="nav-item ">
-                  <Link
-                    className="nav-link active "
-                    aria-current="page"
-                    to="/login"
-                  >
-                    Login <FontAwesomeIcon icon={faSignInAlt} />
-                  </Link>
-                </li>
-                <li className="nav-item 1">
-                  <Link
-                    className="nav-link active "
-                    aria-current="page"
-                    to="/register"
-                  >
-                    Register <FontAwesomeIcon icon={faUserPlus} />
-                  </Link>
-                </li>{' '}
-              </>
-            )}
 
-            {isLoggedIn() ? (
-              <>
-                <li className="nav-item 1">
-                  <LogoutButton />
-                </li>
+            <>
+              {' '}
+              <li className="nav-item ">
+                <Link
+                  className="nav-link active "
+                  aria-current="page"
+                  to="/login"
+                >
+                  Login <FontAwesomeIcon icon={faSignInAlt} />
+                </Link>
+              </li>
+              <li className="nav-item 1">
+                <Link
+                  className="nav-link active "
+                  aria-current="page"
+                  to="/register"
+                >
+                  Register <FontAwesomeIcon icon={faUserPlus} />
+                </Link>
+              </li>{' '}
+            </>
 
-                <li className="nav-item 1 ">
-                  <ProfileButton />
-                </li>
-              </>
-            ) : null}
+            <>
+              <li className="nav-item 1">
+                <LogoutButton />
+              </li>
+
+              <li className="nav-item 1 ">
+                <ProfileButton />
+              </li>
+            </>
           </ul>
         </div>
       </div>
