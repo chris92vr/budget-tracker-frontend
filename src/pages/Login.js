@@ -17,7 +17,7 @@ const Login = () => {
       credentials: 'include',
       mode: 'cors',
       AccessControlAllowOrigin:
-        'https://budget-tracker-frontend-delta.vercel.app',
+        'http://budget-tracker-frontend-delta.vercel.app',
       AccessControlAllowCredentials: 'true',
 
       body: JSON.stringify({
