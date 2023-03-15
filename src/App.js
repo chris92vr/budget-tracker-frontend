@@ -5,17 +5,8 @@ import './App.css';
 import Nav from './components/Nav';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import { getSessionCookie } from './utils';
 
 import { HashRouter } from 'react-router-dom';
-
-function isLoggedIn() {
-  const token = getSessionCookie();
-  if (token) {
-    return true;
-  }
-  return false;
-}
 
 function App() {
   return (
@@ -29,18 +20,14 @@ function App() {
             <Route path="/register" element={<Register />} />
           </Routes>
 
-          {isLoggedIn() ? (
-            <>
+          <>
+            {' '}
+            <Routes>
               {' '}
-              <Routes>
-                {' '}
-                <Route path="/" element={<Home />} />
-                <Route path="/profile" element={<Profile />} />{' '}
-              </Routes>{' '}
-            </>
-          ) : (
-            <p>Please Log in or register</p>
-          )}
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />{' '}
+            </Routes>{' '}
+          </>
         </main>
       </HashRouter>
     </div>
