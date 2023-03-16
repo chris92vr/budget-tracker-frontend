@@ -8,12 +8,6 @@ const LogoutButton = () => {
     const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
       credentials: 'include',
       mode: 'cors',
-      AccessControlAllowOrigin:
-        'https://budget-tracker-frontend-delta.vercel.app',
-      AccessControlAllowCredentials: 'include',
-      SameSite: 'Secure',
-      Secure: 'true',
-
       method: 'POST',
 
       headers: { 'Content-Type': 'application/json' },

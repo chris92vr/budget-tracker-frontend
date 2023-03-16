@@ -13,11 +13,6 @@ export default function AddBudgetButton({ show, handleClose }) {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       mode: 'cors',
-      AccessControlAllowOrigin:
-        'https://budget-tracker-frontend-delta.vercel.app',
-      AccessControlAllowCredentials: 'include',
-      SameSite: 'Secure',
-      Secure: 'true',
       body: JSON.stringify({
         name,
         max,
