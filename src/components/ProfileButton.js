@@ -21,10 +21,6 @@ const ProfileButton = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':
-            'https://budget-tracker-frontend-delta.vercel.app',
-          'Access-Control-Allow-Headers':
-            'Origin , X-Requested-With, Content-Type, Accept',
         },
       }
     );
