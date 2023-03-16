@@ -55,7 +55,7 @@ export default function AddExpenseButton({
       const user = await fetch(
         'https://budgeet-tracker-api.herokuapp.com/getBudgets',
         {
-          method: 'GET',
+          method: 'POST',
           credentials: 'include',
           mode: 'cors',
           headers: { 'Content-Type': 'application/json' },
