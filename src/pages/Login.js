@@ -15,6 +15,8 @@ const Login = () => {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
+      AccessControlAllowOrigin:
+        'https://budget-tracker-frontend-delta.vercel.app',
       body: JSON.stringify({
         username,
         password,

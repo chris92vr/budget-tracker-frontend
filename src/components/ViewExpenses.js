@@ -70,6 +70,8 @@ function ViewExpenses({ budgetId, handleClose }) {
           method: 'GET',
           credentials: 'include',
           mode: 'cors',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
         }
       );
       if (user.status === 200 && user != null) {

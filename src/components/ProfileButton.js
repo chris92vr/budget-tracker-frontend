@@ -13,6 +13,8 @@ const ProfileButton = () => {
       {
         credentials: 'include',
         mode: 'cors',
+        AccessControlAllowOrigin:
+          'https://budget-tracker-frontend-delta.vercel.app',
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

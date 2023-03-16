@@ -16,6 +16,8 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
+        AccessControlAllowOrigin:
+          'https://budget-tracker-frontend-delta.vercel.app',
         mode: 'cors',
         body: JSON.stringify({
           description,
