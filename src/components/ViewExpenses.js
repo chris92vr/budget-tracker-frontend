@@ -13,8 +13,7 @@ function deleteBudget(budgetId) {
       AccessControlAllowOrigin:
         'https://budget-tracker-frontend-delta.vercel.app',
       AccessControlAllowCredentials: 'include',
-      SameSite: 'Secure',
-      Secure: 'true',
+
       body: JSON.stringify({
         budget_id: budgetId,
       }),
@@ -40,11 +39,7 @@ function deleteExpense(expenseId) {
       AccessControlAllowOrigin:
         'https://budget-tracker-frontend-delta.vercel.app',
       AccessControlAllowCredentials: 'include',
-      SameSite: 'Secure',
-      Secure: 'true',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+
       body: JSON.stringify({
         expense_id: expenseId,
       }),
