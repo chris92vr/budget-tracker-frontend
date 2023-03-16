@@ -9,7 +9,7 @@ const ProfileButton = () => {
     e.preventDefault();
 
     const response = fetch(
-      'https://cryptic-headland-94862.herokuapp.com/https://budgeet-tracker-api.herokuapp.com/protected',
+      'https://budgeet-tracker-api.herokuapp.com/protected',
       {
         credentials: 'include',
         mode: 'cors',
