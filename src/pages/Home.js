@@ -7,7 +7,7 @@ import { Button, Stack, Container, Badge } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
-import Cookies from 'js-cookie';
+import Cookies from 'universal-cookie';
 
 function isLoggedIn() {
   const token = Cookies.get('session_token');
