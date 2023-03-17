@@ -4,11 +4,35 @@ import { useState, useEffect } from 'react';
 export default function AddExpenseButton({ handleClose, budgetId }) {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-
   const [budgets, setBudgets] = useState([]);
+  console.log('budfsaf', budgetId);
+
+  useEffect(() => {
+    // declare the async data fetching function
+    const fetchData = async () => {
+      // get the data from the api
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/getBudget?budget_id=' +
+          budgetId,
+        {
+          method: 'GET',
+          credentials: 'include',
+          mode: 'cors',
+          AccessControlAllowOrigin: 'http://localhost:3000',
+        }
+      );
+      // convert the data to json
+      const userJson = await user.json();
+      // set the data to the state
+      setBudgets(userJson);
+    };
+    // call the async function
+    fetchData();
+  }, [budgetId]);
 
   const submit = (e) => {
     e.preventDefault();
+    console.log('budasddfsaf', budgetId);
 
     const response = fetch(
       'https://budgeet-tracker-api.herokuapp.com/expense',
@@ -16,8 +40,7 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        AccessControlAllowOrigin:
-          'https://budget-tracker-frontend-delta.vercel.app',
+        AccessControlAllowOrigin: 'http://localhost:3000',
         AccessControlAllowCredentials: 'include',
         mode: 'cors',
         body: JSON.stringify({
@@ -28,13 +51,16 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
       }
     );
     if (response != null) {
+      console.log('budasddadsadfsaf', budgetId);
+
       response
         .then((res) => {
           if (res.status === 200) {
             res.json().then((data) => {
+              console.log('budasddaddsadsadfsaf', budgetId);
               console.log(data);
             });
-            window.location.reload(false);
+            //window.location.reload(false);
             handleClose();
             console.log(response);
           } else {
@@ -47,77 +73,46 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
     }
   };
 
-  useEffect(() => {
-    // declare the async data fetching function
-    const fetchData = async () => {
-      // get the data from the api
-      const user = await fetch(
-        'https://budgeet-tracker-api.herokuapp.com/getBudgets',
-        {
-          method: 'GET',
-          credentials: 'include',
-          mode: 'cors',
-          AccessControlAllowOrigin:
-            'https://budget-tracker-frontend-delta.vercel.app',
-          AccessControlAllowCredentials: 'include',
-        }
-      );
-      // convert the data to json
-      const json = await user.json();
-
-      setBudgets(json);
-      // set state with the result
-    };
-
-    // call the async function
-    fetchData();
-  }, []);
-
   return (
-    <Modal show={budgetId != null} onHide={handleClose}>
-      <Form onSubmit={submit}>
-        <Modal.Header closeButton>
-          <Modal.Title>New Expense</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Group className="mb-3" controlId="description">
+    <Modal show={budgetId} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>Add Expense</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group controlId="formBasicEmail">
             <Form.Label>Description</Form.Label>
             <Form.Control
-              onChange={(e) => setDescription(e.target.value)}
               type="text"
-              required
+              placeholder="Enter description"
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="amount">
+
+          <Form.Group controlId="formBasicPassword">
             <Form.Label>Amount</Form.Label>
             <Form.Control
+              type="number"
+              placeholder="Enter amount"
               onChange={(e) => setAmount(e.target.value)}
-              type="int"
-              required
-              min={0}
-              step={0.01}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="budget_id">
+          <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Budget</Form.Label>
-            <Form.Select defaultValue={budgetId} required>
-              <option value="">Select a budget</option>
-              {Array.isArray(budgets)
-                ? budgets.map((budget) => (
-                    <option key={budget.budget_id} value={budget.budget_id}>
-                      {budget.name}
-                    </option>
-                  ))
-                : null}
-            </Form.Select>
+            <Form.Control as="select">
+              <option value={budgetId}>{budgets.name}</option>
+            </Form.Control>
           </Form.Group>
-          <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
-              Add
-            </Button>
-          </div>
-        </Modal.Body>
-      </Form>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={submit}>
+          Save Changes
+        </Button>
+      </Modal.Footer>
     </Modal>
   );
 }

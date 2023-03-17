@@ -24,8 +24,7 @@ const Register = () => {
         method: 'POST',
         credentials: 'include',
         mode: 'cors',
-        AccessControlAllowOrigin:
-          'https://budget-tracker-frontend-delta.vercel.app',
+        AccessControlAllowOrigin: 'http://localhost:3000',
         body: JSON.stringify({
           username,
           email,

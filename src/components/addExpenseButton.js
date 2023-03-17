@@ -18,9 +18,11 @@ export default function AddExpenseButton({
       'https://budgeet-tracker-api.herokuapp.com/expense',
       {
         method: 'POST',
-        credentials: 'include',
-        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowCredentials: 'include',
+        mode: 'cors',
         body: JSON.stringify({
           description,
           amount,
@@ -58,8 +60,7 @@ export default function AddExpenseButton({
           method: 'GET',
           credentials: 'include',
           mode: 'cors',
-          AccessControlAllowOrigin:
-            'https://budget-tracker-frontend-delta.vercel.app',
+          AccessControlAllowOrigin: 'http://localhost:3000',
         }
       );
       // convert the data to json
