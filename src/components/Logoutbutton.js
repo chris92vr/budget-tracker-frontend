@@ -9,7 +9,8 @@ const LogoutButton = () => {
       credentials: 'include',
       mode: 'cors',
       method: 'POST',
-      AccessControlAllowOrigin: 'http://localhost:3000',
+      AccessControlAllowOrigin:
+        'https://budget-tracker-frontend-delta.vercel.app',
 
       headers: { 'Content-Type': 'application/json' },
     });

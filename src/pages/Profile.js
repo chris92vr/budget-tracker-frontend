@@ -14,7 +14,8 @@ const UserProfile = () => {
           credentials: 'include',
           mode: 'cors',
           method: 'GET',
-          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
         }
       );
 

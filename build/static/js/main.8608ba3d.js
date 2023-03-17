@@ -9757,14 +9757,18 @@
             children: (0, v.jsxs)('form', {
               onSubmit: function (e) {
                 e.preventDefault(),
-                  fetch('http://localhost:3000/login', {
-                    method: 'POST',
-                    credentials: 'include',
-                    mode: 'cors',
-                    AccessControlAllowOrigin: 'http://localhost:3000',
-                    AccessControlAllowCredentials: 'true',
-                    body: JSON.stringify({ username: t, password: r }),
-                  })
+                  fetch(
+                    'https://budget-tracker-frontend-delta.vercel.app/login',
+                    {
+                      method: 'POST',
+                      credentials: 'include',
+                      mode: 'cors',
+                      AccessControlAllowOrigin:
+                        'https://budget-tracker-frontend-delta.vercel.app',
+                      AccessControlAllowCredentials: 'true',
+                      body: JSON.stringify({ username: t, password: r }),
+                    }
+                  )
                     .then(function (e) {
                       console.log('response status: ' + e.status),
                         console.log('cookies: ' + o.get('session_token')),
@@ -13826,7 +13830,8 @@
                   headers: { 'Content-Type': 'application/json' },
                   credentials: 'include',
                   mode: 'cors',
-                  AccessControlAllowOrigin: 'http://localhost:3000',
+                  AccessControlAllowOrigin:
+                    'https://budget-tracker-frontend-delta.vercel.app',
                   AccessControlAllowCredentials: 'true',
                   body: JSON.stringify({ name: r, max: s }),
                 }
@@ -14366,7 +14371,7 @@
                                 credentials: 'include',
                                 mode: 'cors',
                                 AccessControlAllowOrigin:
-                                  'http://localhost:3000',
+                                  'https://budget-tracker-frontend-delta.vercel.app',
                                 AccessControlAllowCredentials: 'true',
                               }
                             )
@@ -14401,7 +14406,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',
                     mode: 'cors',
-                    AccessControlAllowOrigin: 'http://localhost:3000',
+                    AccessControlAllowOrigin:
+                      'https://budget-tracker-frontend-delta.vercel.app',
                     AccessControlAllowCredentials: 'true',
                     body: JSON.stringify({
                       description: i,
@@ -14535,7 +14541,7 @@
                                 credentials: 'include',
                                 mode: 'cors',
                                 AccessControlAllowOrigin:
-                                  'http://localhost:3000',
+                                  'https://budget-tracker-frontend-delta.vercel.app',
                                 AccessControlAllowCredentials: 'true',
                               }
                             )
@@ -14570,7 +14576,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     credentials: 'include',
                     mode: 'cors',
-                    AccessControlAllowOrigin: 'http://localhost:3000',
+                    AccessControlAllowOrigin:
+                      'https://budget-tracker-frontend-delta.vercel.app',
                     AccessControlAllowCredentials: 'true',
                     body: JSON.stringify({
                       description: r,
@@ -14698,7 +14705,7 @@
                                   credentials: 'include',
                                   mode: 'cors',
                                   AccessControlAllowOrigin:
-                                    'http://localhost:3000',
+                                    'https://budget-tracker-frontend-delta.vercel.app',
                                   AccessControlAllowCredentials: 'true',
                                 }
                               )
@@ -14750,7 +14757,7 @@
                                 credentials: 'include',
                                 mode: 'cors',
                                 AccessControlAllowOrigin:
-                                  'http://localhost:3000',
+                                  'https://budget-tracker-frontend-delta.vercel.app',
                                 AccessControlAllowCredentials: 'true',
                                 body: JSON.stringify({ budget_id: e }),
                               }
@@ -14812,7 +14819,7 @@
                                         credentials: 'include',
                                         mode: 'cors',
                                         AccessControlAllowOrigin:
-                                          'http://localhost:3000',
+                                          'https://budget-tracker-frontend-delta.vercel.app',
                                         AccessControlAllowCredentials: 'true',
                                         headers: {
                                           'Content-Type': 'application/json',
@@ -14900,7 +14907,7 @@
                                   credentials: 'include',
                                   mode: 'cors',
                                   AccessControlAllowOrigin:
-                                    'http://localhost:3000',
+                                    'https://budget-tracker-frontend-delta.vercel.app',
                                   AccessControlAllowCredentials: 'true',
                                   method: 'GET',
                                 }
@@ -14949,7 +14956,7 @@
                                   credentials: 'include',
                                   mode: 'cors',
                                   AccessControlAllowOrigin:
-                                    'http://localhost:3000',
+                                    'https://budget-tracker-frontend-delta.vercel.app',
                                   AccessControlAllowCredentials: 'true',
                                   method: 'GET',
                                 }
@@ -15078,7 +15085,7 @@
                                         credentials: 'include',
                                         mode: 'cors',
                                         AccessControlAllowOrigin:
-                                          'http://localhost:3000',
+                                          'https://budget-tracker-frontend-delta.vercel.app',
                                         AccessControlAllowCredentials: 'true',
                                         method: 'DELETE',
                                         headers: {
@@ -18403,7 +18410,8 @@
                 fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
                   credentials: 'include',
                   mode: 'cors',
-                  AccessControlAllowOrigin: 'http://localhost:3000',
+                  AccessControlAllowOrigin:
+                    'https://budget-tracker-frontend-delta.vercel.app',
                   AccessControlAllowCredentials: 'true',
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
@@ -18439,7 +18447,8 @@
                 fetch('https://budgeet-tracker-api.herokuapp.com/protected', {
                   credentials: 'include',
                   mode: 'cors',
-                  AccessControlAllowOrigin: 'http://localhost:3000',
+                  AccessControlAllowOrigin:
+                    'https://budget-tracker-frontend-delta.vercel.app',
                   AccessControlAllowCredentials: 'true',
                   method: 'GET',
                   headers: { 'Content-Type': 'application/json' },
@@ -25575,7 +25584,8 @@
                               method: 'POST',
                               credentials: 'include',
                               mode: 'cors',
-                              AccessControlAllowOrigin: 'http://localhost:3000',
+                              AccessControlAllowOrigin:
+                                'https://budget-tracker-frontend-delta.vercel.app',
                               AccessControlAllowCredentials: 'true',
                               body: JSON.stringify({
                                 username: t,
@@ -25728,7 +25738,7 @@
                                     credentials: 'include',
                                     mode: 'cors',
                                     AccessControlAllowOrigin:
-                                      'http://localhost:3000',
+                                      'https://budget-tracker-frontend-delta.vercel.app',
                                     AccessControlAllowCredentials: 'true',
                                     method: 'GET',
                                   }

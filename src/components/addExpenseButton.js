@@ -20,7 +20,8 @@ export default function AddExpenseButton({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        AccessControlAllowOrigin: 'http://localhost:3000',
+        AccessControlAllowOrigin:
+          'https://budget-tracker-frontend-delta.vercel.app',
         AccessControlAllowCredentials: 'include',
         mode: 'cors',
         body: JSON.stringify({
@@ -60,7 +61,8 @@ export default function AddExpenseButton({
           method: 'GET',
           credentials: 'include',
           mode: 'cors',
-          AccessControlAllowOrigin: 'http://localhost:3000',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
         }
       );
       // convert the data to json

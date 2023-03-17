@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "access-control-allow-origin",
-          "value": "http://localhost:3000/"
+          "value": "https://budget-tracker-frontend-delta.vercel.app/"
         }
       ]
     }
