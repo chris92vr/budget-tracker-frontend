@@ -3,7 +3,7 @@ import AddBudgetButton from '../components/addBudgetButton';
 import BudgetCard from '../components/BudgetCard';
 import CurrentDate from '../components/CurrentDate';
 import { useState, useEffect } from 'react';
-import { Button, Stack, Container, Text, Badge } from 'react-bootstrap';
+import { Button, Stack, Container, Badge } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
@@ -96,7 +96,7 @@ function Home() {
       .catch(console.error);
     console.log(result);
   }, []);
-
+  console.log('is logged in', isLoggedIn());
   return (
     <>
       {isLoggedIn() ? (
