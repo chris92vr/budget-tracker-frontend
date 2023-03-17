@@ -17,7 +17,7 @@ function isLoggedIn() {
   }
   return false;
 }
-
+console.log('isLoggedIn nav', isLoggedIn());
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
