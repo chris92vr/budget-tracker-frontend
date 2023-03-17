@@ -51,7 +51,7 @@ const Nav = () => {
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" to="/signin">
+                <Link className="nav-link" to="/login">
                   <FontAwesomeIcon icon={faSignInAlt} /> Sign In
                 </Link>
               </li>
@@ -64,7 +64,7 @@ const Nav = () => {
               </li>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" to="/signup">
+                <Link className="nav-link" to="/register">
                   <FontAwesomeIcon icon={faUserPlus} /> Sign Up
                 </Link>
               </li>
