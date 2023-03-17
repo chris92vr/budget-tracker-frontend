@@ -28,10 +28,7 @@ function Home() {
 
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-  const API_URL = process.env.REACT_APP_API_URL;
-  console.log('TEST', API_URL);
-
-  console.log('TEST', process.env.TEST_API_URL);
+  console.log('cookies', Cookies.get('session_token'));
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
@@ -97,6 +94,7 @@ function Home() {
     console.log(result);
   }, []);
   console.log('is logged in', isLoggedIn());
+  console.log('cookies', Cookies.get('session_token'));
   return (
     <>
       {isLoggedIn() ? (

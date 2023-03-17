@@ -17,6 +17,7 @@ function isLoggedIn() {
   }
   return false;
 }
+console.log('cookies nav', Cookies.get('session_token'));
 console.log('isLoggedIn nav', isLoggedIn());
 const Nav = () => {
   return (
