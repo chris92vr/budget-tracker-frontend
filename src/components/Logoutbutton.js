@@ -17,7 +17,7 @@ const LogoutButton = () => {
     response
       .then((res) => {
         if (res.status === 200) {
-          //window.location.href = '/';
+          window.location.href = '/';
         } else {
           alert('Invalid username or password');
         }
