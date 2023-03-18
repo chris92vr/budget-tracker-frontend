@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { logout } from '../utils';
 import { isUserLoggedIn } from '../utils';
+import { getCookie } from '../utils';
+
 import {
   faHome,
   faSignInAlt,
@@ -11,6 +13,7 @@ import {
 } from '@fortawesome/fontawesome-free-solid';
 
 const Nav = () => {
+  console.log('cookie', getCookie('session_token'));
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

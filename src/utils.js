@@ -51,26 +51,8 @@ export function isUserLoggedIn() {
   );
 }
 
-export function logout() {
-  const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
-    credentials: 'include',
-    mode: 'cors',
-    method: 'POST',
-    AccessControlAllowOrigin:
-      'https://budget-tracker-frontend-delta.vercel.app',
-
-    headers: { 'Content-Type': 'application/json' },
-  });
-
-  response
-    .then((res) => {
-      if (res.status === 200) {
-        window.location.href = '/';
-      } else {
-        alert('Invalid username or password');
-      }
-    })
-    .catch((err) => {
-      alert('Invalid username or password');
-    });
-}
+export const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+};
