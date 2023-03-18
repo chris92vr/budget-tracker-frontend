@@ -52,9 +52,3 @@ export function isUserLoggedIn() {
     // });
   );
 }
-
-// get cookie using universal-cookie
-export const getCookie = (key) => {
-  const cookies = new Cookies();
-  return cookies.get(key);
-};
