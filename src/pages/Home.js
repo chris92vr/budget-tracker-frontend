@@ -89,7 +89,7 @@ function Home() {
 
   return (
     <>
-      {isUserLoggedIn ? (
+      {isUserLoggedIn() ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
