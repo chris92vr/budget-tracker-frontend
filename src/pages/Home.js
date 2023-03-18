@@ -29,7 +29,7 @@ function Home() {
 
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-  console.log('is user logged in', isUserLoggedIn);
+  console.log('is user logged in', isLoggedIn);
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
