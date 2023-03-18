@@ -55,7 +55,11 @@ export function isUserLoggedIn() {
 
 // get cookie using js-cookie
 export const getCookie = (key) => {
-  if (process.browser) {
+  // process.browser give issue in server side rendering so we need to check if window is defined or not
+  // if window is not defined then we are returning false
+  if (typeof window === 'undefined') {
+    return false;
+  } else {
     return Cookies.get(key);
   }
 };
