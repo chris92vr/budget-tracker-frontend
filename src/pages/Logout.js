@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const logout = () => {
   const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
     credentials: 'include',
@@ -22,6 +23,16 @@ const logout = () => {
     .catch((err) => {
       alert('Invalid username or password');
     });
-};
 
+  return (
+    <form onSubmit={logout}>
+      <button className="logout-button border-0 bg-light mt-1 " type="submit">
+        Log Out{' '}
+        <FontAwesomeIcon icon={{ prefix: 'fas', iconName: 'sign-out-alt' }} />
+      </button>
+    </form>
+  );
+};
 export default logout;
+
+// }
