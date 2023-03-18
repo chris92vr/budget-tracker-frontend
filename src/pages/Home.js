@@ -18,7 +18,7 @@ function Home() {
   const [addExpenseButtonBudgetId, setAddExpenseButtonBudgetId] = useState();
   const [addExpenseButtonByBudgetId, setAddExpenseButtonByBudgetId] =
     useState();
-  console.log('is user logged in', isUserLoggedIn());
+  console.log('is user logged in', isUserLoggedIn ? 'true' : 'false');
 
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
