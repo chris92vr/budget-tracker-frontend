@@ -29,6 +29,11 @@ const Login = () => {
 
         if (res.status === 200) {
           // set coookie from response header
+          sessionStorage.setItem(
+            'session_token',
+            res.headers.get('session_token')
+          );
+          console.log('session token: ' + res.headers.get('session_token'));
           redirectToHome();
         } else {
           console.log('response status: ' + res.status);

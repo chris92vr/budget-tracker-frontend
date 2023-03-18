@@ -8,9 +8,15 @@ import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
 import { isUserLoggedIn } from '../utils';
-import { getCookie } from '../utils';
 import { Link } from 'react-router-dom';
-import Cookies from 'js-cookie';
+
+function isLoggedIn() {
+  const token = sessionStorage.getItem('session_token');
+  if (token) {
+    return true;
+  }
+  return false;
+}
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -20,12 +26,10 @@ function Home() {
   const [addExpenseButtonBudgetId, setAddExpenseButtonBudgetId] = useState();
   const [addExpenseButtonByBudgetId, setAddExpenseButtonByBudgetId] =
     useState();
-  console.log('is user logged in', isUserLoggedIn ? 'true' : 'false');
-  console.log('cookie', getCookie('session_token'));
-  console.log('cookiess', Cookies.get('session_token'));
+
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-
+  console.log('is user logged in', isUserLoggedIn);
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
