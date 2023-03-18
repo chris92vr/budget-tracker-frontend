@@ -41,7 +41,7 @@ const Nav = () => {
                   <ProfileButton />
                 </Link>
                 <li className="nav-item">
-                  <Link className="nav-link" onClick={logout}>
+                  <Link className="nav-link" to="/logout" onClick={logout}>
                     <FontAwesomeIcon icon={faSignInAlt} /> Log Out
                   </Link>
                 </li>
