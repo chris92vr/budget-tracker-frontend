@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { isUserLoggedIn } from '../utils';
 import { getCookie } from '../utils';
 import Cookies from 'universal-cookie';
 
@@ -13,6 +12,13 @@ import {
 } from '@fortawesome/fontawesome-free-solid';
 import LogoutButton from './Logoutbutton';
 
+function isLoggedIn() {
+  const token = sessionStorage.getItem('session_token');
+  if (token) {
+    return true;
+  }
+  return false;
+}
 const Nav = () => {
   console.log('cookie', getCookie('session_token'));
   const cookies = new Cookies();
@@ -42,7 +48,7 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {isUserLoggedIn ? (
+            {isLoggedIn() ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   <ProfileButton />

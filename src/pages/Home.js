@@ -7,7 +7,6 @@ import { Button, Stack, Container, Badge } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
-import { isUserLoggedIn } from '../utils';
 import { Link } from 'react-router-dom';
 
 function isLoggedIn() {
@@ -98,7 +97,7 @@ function Home() {
 
   return (
     <>
-      {isUserLoggedIn ? (
+      {isLoggedIn() ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
