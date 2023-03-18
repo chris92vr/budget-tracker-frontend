@@ -22,13 +22,55 @@ export const formatDate = (date) => {
   );
 };
 
-export function getSessionCookie() {
-  const cookies = document.cookie.split(';');
-  const sessionCookie = cookies.find((cookie) =>
-    cookie.includes('session_token')
+export function isUserLoggedIn() {
+  const response = fetch(
+    'https://budgeet-tracker-api.herokuapp.com/protected ',
+    {
+      credentials: 'include',
+      mode: 'cors',
+      AccessControlAllowOrigin:
+        'https://budget-tracker-frontend-delta.vercel.app',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
   );
-  if (sessionCookie) {
-    return sessionCookie.split('=')[1];
-  }
-  return null;
+
+  response.then(
+    (res) => {
+      if (res.status === 200) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    // .catch((err) => {
+    //   alert('Invalid username or password');
+    // });
+  );
+}
+
+export function logout() {
+  const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
+    credentials: 'include',
+    mode: 'cors',
+    method: 'POST',
+    AccessControlAllowOrigin:
+      'https://budget-tracker-frontend-delta.vercel.app',
+
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  response
+    .then((res) => {
+      if (res.status === 200) {
+        window.location.href = '/';
+      } else {
+        alert('Invalid username or password');
+      }
+    })
+    .catch((err) => {
+      alert('Invalid username or password');
+    });
 }
