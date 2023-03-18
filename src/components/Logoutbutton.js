@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Cookies from 'js-cookie';
 
 const LogoutButton = () => {
   const submit = (e) => {
@@ -18,7 +17,7 @@ const LogoutButton = () => {
     response
       .then((res) => {
         if (res.status === 200) {
-          window.location.href = '/signin';
+          //window.location.href = '/';
         } else {
           alert('Invalid username or password');
         }
@@ -26,7 +25,6 @@ const LogoutButton = () => {
       .catch((err) => {
         alert('Invalid username or password');
       });
-    Cookies.setItem('session_token', undefined);
   };
 
   return (

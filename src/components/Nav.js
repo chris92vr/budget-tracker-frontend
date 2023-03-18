@@ -1,25 +1,45 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from './Logoutbutton';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Cookies from 'js-cookie';
+import React, { useEffect, useState } from 'react';
 import {
   faHome,
   faSignInAlt,
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
 
-function isLoggedIn() {
-  const token = Cookies.get('session_token');
-  if (token) {
-    return true;
-  }
-  return false;
-}
-console.log('cookies nav', Cookies.get('session_token'));
-console.log('isLoggedIn nav', isLoggedIn());
 const Nav = () => {
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    // declare the async data fetching function
+    const fetchData = async () => {
+      // get the data from the api
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/protected',
+        {
+          credentials: 'include',
+          mode: 'cors',
+          method: 'GET',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
+        }
+      );
+
+      // convert the data to json
+      const json = await user.json();
+
+      // set state with the result
+      setUser(json.username);
+    };
+
+    // call the function
+    const result = fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+    console.log(result);
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -44,7 +64,7 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {isLoggedIn() ? (
+            {user ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   <ProfileButton />
@@ -57,11 +77,9 @@ const Nav = () => {
                 </Link>
               </li>
             )}
-            {isLoggedIn() ? (
+            {user ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/logout">
-                  <LogoutButton />
-                </Link>
+                <LogoutButton className="nav-link" />
               </li>
             ) : (
               <li className="nav-item">

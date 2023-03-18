@@ -7,15 +7,6 @@ import { Button, Stack, Container, Badge } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
-import Cookies from 'js-cookie';
-
-function isLoggedIn() {
-  const token = Cookies.get('session_token');
-  if (token) {
-    return true;
-  }
-  return false;
-}
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -28,7 +19,7 @@ function Home() {
 
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-  console.log('cookies', Cookies.get('session_token'));
+
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
@@ -93,11 +84,10 @@ function Home() {
       .catch(console.error);
     console.log(result);
   }, []);
-  console.log('is logged in', isLoggedIn());
-  console.log('cookies', Cookies.get('session_token'));
+
   return (
     <>
-      {isLoggedIn() ? (
+      {Budgets.length > 0 ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
