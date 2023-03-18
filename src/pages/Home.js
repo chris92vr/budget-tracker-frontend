@@ -10,6 +10,7 @@ import ViewExpenses from '../components/ViewExpenses';
 import { isUserLoggedIn } from '../utils';
 import { getCookie } from '../utils';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -21,6 +22,7 @@ function Home() {
     useState();
   console.log('is user logged in', isUserLoggedIn ? 'true' : 'false');
   console.log('cookie', getCookie('session_token'));
+  console.log('cookiess', Cookies.get('session_token'));
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
 
