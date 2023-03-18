@@ -88,7 +88,7 @@ function Home() {
 
   return (
     <>
-      {Budgets ? (
+      {isUserLoggedIn ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
@@ -220,11 +220,6 @@ function Home() {
             <Badge bg="primary">Login to get started</Badge>
           </Stack>
         </Container>
-      )}
-      {isUserLoggedIn ? (
-        <Button variant="primary"> Logout </Button>
-      ) : (
-        <Button variant="primary"> Login </Button>
       )}
     </>
   );
