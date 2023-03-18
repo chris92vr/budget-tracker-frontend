@@ -26,16 +26,15 @@ const Logout = () => {
       .catch((err) => {
         alert('Invalid username or password');
       });
-
-    return (
-      <form onSubmit={logout}>
-        <button className="logout-button border-0 bg-light mt-1 " type="submit">
-          Log Out Page Button{' '}
-          <FontAwesomeIcon icon={{ prefix: 'fas', iconName: 'sign-out-alt' }} />
-        </button>
-      </form>
-    );
   };
+  return (
+    <form onSubmit={logout}>
+      <button className="logout-button border-0 bg-light mt-1 " type="submit">
+        Log Out Page Button{' '}
+        <FontAwesomeIcon icon={{ prefix: 'fas', iconName: 'sign-out-alt' }} />
+      </button>
+    </form>
+  );
 };
 
 export default Logout;
