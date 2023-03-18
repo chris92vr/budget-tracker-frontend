@@ -18,6 +18,8 @@ const LogoutButton = () => {
       .then((res) => {
         if (res.status === 200) {
           window.location.href = '/';
+          // set session_token local storage to null
+          sessionStorage.setItem('session_token', null);
         } else {
           alert('Invalid username or password');
         }
