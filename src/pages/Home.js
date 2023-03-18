@@ -87,7 +87,7 @@ function Home() {
 
   return (
     <>
-      {Budgets.length > 0 ? (
+      {Budgets ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
