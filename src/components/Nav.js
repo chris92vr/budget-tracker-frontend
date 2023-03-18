@@ -8,7 +8,6 @@ import {
   faSignInAlt,
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
-import LogoutButton from './Logoutbutton';
 
 function isLoggedIn() {
   const token = sessionStorage.getItem('session_token');
@@ -50,7 +49,6 @@ const Nav = () => {
                 <li className="nav-item">
                   <Link className="nav-link" to="/logout">
                     <FontAwesomeIcon icon={faSignInAlt} /> Log Out
-                    <LogoutButton />
                   </Link>
                 </li>
               </li>
