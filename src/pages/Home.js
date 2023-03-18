@@ -8,6 +8,7 @@ import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
 import { isUserLoggedIn } from '../utils';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -218,6 +219,9 @@ function Home() {
           </Stack>
           <Stack direction="horizontal" gap="2" className="mt-4 mb-4">
             <Badge bg="primary">Login to get started</Badge>
+            <Link to="/login"> Login </Link> or{' '}
+            <Link to="/signup"> Signup </Link> to get started with Budget
+            Tracker ©
           </Stack>
         </Container>
       )}
