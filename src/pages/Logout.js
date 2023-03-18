@@ -30,7 +30,7 @@ const Logout = () => {
     return (
       <form onSubmit={logout}>
         <button className="logout-button border-0 bg-light mt-1 " type="submit">
-          Log Out{' '}
+          Log Out Page Button{' '}
           <FontAwesomeIcon icon={{ prefix: 'fas', iconName: 'sign-out-alt' }} />
         </button>
       </form>
