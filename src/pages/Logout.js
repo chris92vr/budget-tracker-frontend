@@ -1,5 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-const logout = () => {
+
+const logout = (e) => {
+  e.preventDefault();
+
   const response = fetch('https://budgeet-tracker-api.herokuapp.com/logout', {
     credentials: 'include',
     mode: 'cors',
