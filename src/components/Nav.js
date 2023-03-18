@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { logout } from '../utils';
 import { isUserLoggedIn } from '../utils';
 import { getCookie } from '../utils';
 
@@ -11,6 +10,7 @@ import {
   faSignInAlt,
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
+import LogoutButton from './Logoutbutton';
 
 const Nav = () => {
   console.log('cookie', getCookie('session_token'));
@@ -44,8 +44,9 @@ const Nav = () => {
                   <ProfileButton />
                 </Link>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout" onClick={logout}>
+                  <Link className="nav-link" to="/logout">
                     <FontAwesomeIcon icon={faSignInAlt} /> Log Out
+                    <LogoutButton />
                   </Link>
                 </li>
               </li>
