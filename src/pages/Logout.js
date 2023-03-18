@@ -12,7 +12,7 @@ const logout = () => {
   response
     .then((res) => {
       if (res.status === 200) {
-        window.location.href = '/';
+        window.location.href = '/home';
         // set session_token local storage to null
         sessionStorage.setItem('session_token', null);
       } else {
