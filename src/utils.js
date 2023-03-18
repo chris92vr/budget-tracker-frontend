@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import Cookies from 'universal-cookie';
 
 export const currencyFormatter = new Intl.NumberFormat(undefined, {
   style: 'currency',
@@ -53,13 +53,8 @@ export function isUserLoggedIn() {
   );
 }
 
-// get cookie using js-cookie
+// get cookie using universal-cookie
 export const getCookie = (key) => {
-  // process.browser give issue in server side rendering so we need to check if window is defined or not
-  // if window is not defined then we are returning false
-  if (typeof window === 'undefined') {
-    return false;
-  } else {
-    return Cookies.get(key);
-  }
+  const cookies = new Cookies();
+  return cookies.get(key);
 };
