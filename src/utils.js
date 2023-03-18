@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export const currencyFormatter = new Intl.NumberFormat(undefined, {
   style: 'currency',
   currency: 'EUR',
@@ -51,8 +53,9 @@ export function isUserLoggedIn() {
   );
 }
 
-export const getCookie = (name) => {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
+// get cookie using js-cookie
+export const getCookie = (key) => {
+  if (process.browser) {
+    return Cookies.get(key);
+  }
 };
