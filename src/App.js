@@ -5,7 +5,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
-import LogoutButton from './components/LogoutButton';
+import Logout from './pages/Logout';
 
 import { HashRouter } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ function App() {
               {' '}
               <Route path="/" element={<Home />} />
               <Route path="/profile" element={<Profile />} />{' '}
-              <Route path="/logout" element={<LogoutButton />} />{' '}
+              <Route path="/logout" element={<Logout />} />{' '}
             </Routes>{' '}
           </>
         </main>
