@@ -3,6 +3,7 @@ import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { logout } from '../utils';
+import { isUserLoggedIn } from '../utils';
 import {
   faHome,
   faSignInAlt,
@@ -34,30 +35,31 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/profile">
-                <ProfileButton />
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                <FontAwesomeIcon icon={faSignInAlt} /> Sign In
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" onClick={logout}>
-                <FontAwesomeIcon icon={faSignInAlt} /> Log Out
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/register">
-                <FontAwesomeIcon icon={faUserPlus} /> Sign Up
-              </Link>
-            </li>
+            {isUserLoggedIn ? (
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">
+                  <ProfileButton />
+                </Link>
+                <li className="nav-item">
+                  <Link className="nav-link" onClick={logout}>
+                    <FontAwesomeIcon icon={faSignInAlt} /> Log Out
+                  </Link>
+                </li>
+              </li>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    <FontAwesomeIcon icon={faSignInAlt} /> Sign In
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">
+                    <FontAwesomeIcon icon={faUserPlus} /> Sign Up
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
