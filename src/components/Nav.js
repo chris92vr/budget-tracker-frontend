@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import LogoutButton from './Logoutbutton';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   faHome,
   faSignInAlt,
@@ -10,36 +10,6 @@ import {
 } from '@fortawesome/fontawesome-free-solid';
 
 const Nav = () => {
-  const [user, setUser] = useState('');
-
-  useEffect(() => {
-    // declare the async data fetching function
-    const fetchData = async () => {
-      // get the data from the api
-      const user = await fetch(
-        'https://budgeet-tracker-api.herokuapp.com/protected',
-        {
-          credentials: 'include',
-          mode: 'cors',
-          method: 'GET',
-          AccessControlAllowOrigin:
-            'https://budget-tracker-frontend-delta.vercel.app',
-        }
-      );
-
-      // convert the data to json
-      const json = await user.json();
-
-      // set state with the result
-      setUser(json.username);
-    };
-
-    // call the function
-    const result = fetchData()
-      // make sure to catch any error
-      .catch(console.error);
-    console.log(result);
-  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -64,30 +34,28 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {user ? (
-              <li className="nav-item">
-                <Link className="nav-link" to="/profile">
-                  <ProfileButton />
-                </Link>
-              </li>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  <FontAwesomeIcon icon={faSignInAlt} /> Sign In
-                </Link>
-              </li>
-            )}
-            {user ? (
-              <li className="nav-item">
-                <LogoutButton className="nav-link" />
-              </li>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  <FontAwesomeIcon icon={faUserPlus} /> Sign Up
-                </Link>
-              </li>
-            )}
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/profile">
+                <ProfileButton />
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                <FontAwesomeIcon icon={faSignInAlt} /> Sign In
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <LogoutButton className="nav-link" />
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/register">
+                <FontAwesomeIcon icon={faUserPlus} /> Sign Up
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

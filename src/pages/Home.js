@@ -7,6 +7,7 @@ import { Button, Stack, Container, Badge } from 'react-bootstrap';
 import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
+import { isUserLoggedIn } from '../utils';
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -219,6 +220,11 @@ function Home() {
             <Badge bg="primary">Login to get started</Badge>
           </Stack>
         </Container>
+      )}
+      {isUserLoggedIn ? (
+        <Button variant="primary"> Logout </Button>
+      ) : (
+        <Button variant="primary"> Login </Button>
       )}
     </>
   );
