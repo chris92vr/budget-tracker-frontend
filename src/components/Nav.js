@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { getCookie } from '../utils';
-import Cookies from 'universal-cookie';
 
 import {
   faHome,
@@ -20,10 +18,6 @@ function isLoggedIn() {
   return false;
 }
 const Nav = () => {
-  console.log('cookie', getCookie('session_token'));
-  const cookies = new Cookies();
-  console.log('cookiess', cookies.get('session_token'));
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
