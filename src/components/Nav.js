@@ -37,7 +37,7 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {isUserLoggedIn() ? (
+            {isUserLoggedIn ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   <ProfileButton />
