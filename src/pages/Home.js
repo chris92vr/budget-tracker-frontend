@@ -10,7 +10,7 @@ import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
 import isUserLoggedIn from '../utils';
 
-console.log('isUserLoggedIn', isUserLoggedIn);
+console.log('isUserLoggedIn', isUserLoggedIn());
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -20,7 +20,7 @@ function Home() {
   const [addExpenseButtonBudgetId, setAddExpenseButtonBudgetId] = useState();
   const [addExpenseButtonByBudgetId, setAddExpenseButtonByBudgetId] =
     useState();
-
+  console.log('isUserLoggedIn', isUserLoggedIn());
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
   useEffect(() => {
