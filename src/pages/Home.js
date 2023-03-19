@@ -10,16 +10,6 @@ import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
 import { isUserLoggedIn } from '../utils';
 
-const [userLogged, setUserLogged] = useState(false);
-
-function isUserLogged() {
-  if (isUserLoggedIn()) {
-    setUserLogged(true);
-  } else {
-    setUserLogged(false);
-  }
-}
-
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
   const [showAddExpenseButton, setShowAddExpenseButton] = useState(false);
@@ -32,7 +22,14 @@ function Home() {
   console.log('isUserLoggedIn', isUserLoggedIn());
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-  isUserLogged();
+  const [userLogged, setUserLogged] = useState(false);
+
+  if (isUserLoggedIn()) {
+    setUserLogged(true);
+  } else {
+    setUserLogged(false);
+  }
+
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
