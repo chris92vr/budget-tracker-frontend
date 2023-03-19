@@ -10,8 +10,6 @@ import {
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
 
-import { isUserLoggedIn } from '../utils';
-
 const Nav = () => {
   const [userLogged, setUserLogged] = useState(false);
   useEffect(() => {
@@ -69,16 +67,18 @@ const Nav = () => {
               </Link>
             </li>
             {userLogged ? (
-              <li className="nav-item">
-                <Link className="nav-link" to="/profile">
-                  <ProfileButton />
-                </Link>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/profile">
+                    <ProfileButton />
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <Link className="nav-link">
                     <LogoutButton />
                   </Link>
                 </li>
-              </li>
+              </>
             ) : (
               <>
                 <li className="nav-item">
