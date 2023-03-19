@@ -9,7 +9,7 @@ import {
   faUserPlus,
 } from '@fortawesome/fontawesome-free-solid';
 
-import { isLoggedIn } from '../utils';
+import { isUserLoggedIn } from '../utils';
 
 const Nav = () => {
   return (
@@ -36,7 +36,7 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {isLoggedIn() ? (
+            {isUserLoggedIn() ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   <ProfileButton />
