@@ -22,8 +22,8 @@ export const formatDate = (date) => {
   );
 };
 
-export const isUserLoggedIn = () => {
-  const response = fetch(
+export const isUserLoggedIn = async () => {
+  const response = await fetch(
     'https://budgeet-tracker-api.herokuapp.com/protected ',
     {
       credentials: 'include',
