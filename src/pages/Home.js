@@ -8,7 +8,7 @@ import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
-import isUserLoggedIn from '../utils';
+import { isUserLoggedIn } from '../utils';
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);

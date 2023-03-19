@@ -22,7 +22,7 @@ export const formatDate = (date) => {
   );
 };
 
-export default function isUserLoggedIn() {
+function isUserLoggedIn() {
   const user = fetch('https://budgeet-tracker-api.herokuapp.com/protected', {
     credentials: 'include',
     mode: 'cors',
@@ -35,3 +35,4 @@ export default function isUserLoggedIn() {
     return false;
   }
 }
+export default isUserLoggedIn;
