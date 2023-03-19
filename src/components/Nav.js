@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
+import LogoutButton from './Logoutbutton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
@@ -43,8 +44,8 @@ const Nav = () => {
                   <ProfileButton />
                 </Link>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout">
-                    <FontAwesomeIcon icon={faSignInAlt} /> Log Out
+                  <Link className="nav-link">
+                    <LogoutButton />
                   </Link>
                 </li>
               </li>
