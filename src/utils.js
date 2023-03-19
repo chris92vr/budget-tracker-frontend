@@ -22,7 +22,7 @@ export const formatDate = (date) => {
   );
 };
 
-const isUserLoggedIn = () => {
+export const isUserLoggedIn = () => {
   const response = fetch(
     'https://budgeet-tracker-api.herokuapp.com/protected ',
     {
