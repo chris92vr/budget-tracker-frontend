@@ -40,7 +40,9 @@ export const isUserLoggedIn = () => {
   const json = response
     .then((res) => {
       if (res.status === 200) {
-        return res.json();
+        return true;
+      } else if (res.status === 401) {
+        return false;
       } else {
         return false;
       }
@@ -50,10 +52,7 @@ export const isUserLoggedIn = () => {
       return false;
     });
 
-  if (json === false) {
-    return false;
-  }
-  return json.username;
+  return json;
 };
 
 export default isUserLoggedIn;
