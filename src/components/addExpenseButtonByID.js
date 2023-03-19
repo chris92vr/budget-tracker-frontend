@@ -62,7 +62,7 @@ export default function AddExpenseButton({ handleClose, budgetId }) {
               console.log('budasddaddsadsadfsaf', budgetId);
               console.log(data);
             });
-            //window.location.reload(false);
+            window.location.reload(false);
             handleClose();
             console.log(response);
           } else {
