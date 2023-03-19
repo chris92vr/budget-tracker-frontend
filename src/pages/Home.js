@@ -10,6 +10,16 @@ import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
 import { isUserLoggedIn } from '../utils';
 
+const [userLogged, setUserLogged] = useState(false);
+
+function isUserLogged() {
+  if (isUserLoggedIn()) {
+    setUserLogged(true);
+  } else {
+    setUserLogged(false);
+  }
+}
+
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
   const [showAddExpenseButton, setShowAddExpenseButton] = useState(false);
@@ -18,9 +28,11 @@ function Home() {
   const [addExpenseButtonBudgetId, setAddExpenseButtonBudgetId] = useState();
   const [addExpenseButtonByBudgetId, setAddExpenseButtonByBudgetId] =
     useState();
+
   console.log('isUserLoggedIn', isUserLoggedIn());
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
+  isUserLogged();
   useEffect(() => {
     // declare the async data fetching function
     const fetchData = async () => {
@@ -88,7 +100,7 @@ function Home() {
 
   return (
     <>
-      {isUserLoggedIn() ? (
+      {userLogged ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
