@@ -13,7 +13,7 @@ import {
 import { isUserLoggedIn } from '../utils';
 
 const Nav = () => {
-  console.log('isUserLoggedIn nav', isUserLoggedIn);
+  console.log('isUserLoggedIn nav', isUserLoggedIn());
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

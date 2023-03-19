@@ -22,17 +22,20 @@ export const formatDate = (date) => {
   );
 };
 
-function isUserLoggedIn() {
-  const user = fetch('https://budgeet-tracker-api.herokuapp.com/protected', {
-    credentials: 'include',
-    mode: 'cors',
-    method: 'GET',
-  });
+export const isUserLoggedIn = async () => {
+  const user = await fetch(
+    'https://budgeet-tracker-api.herokuapp.com/protected',
+    {
+      credentials: 'include',
+      mode: 'cors',
+      method: 'GET',
+    }
+  );
 
   if (user) {
     return true;
   } else {
     return false;
   }
-}
+};
 export default isUserLoggedIn;
