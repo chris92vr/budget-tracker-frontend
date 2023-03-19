@@ -37,6 +37,7 @@ export const isUserLoggedIn = async () => {
     }
   );
   response.then((res) => {
+    console.log('res', res);
     if (res.status === 200) {
       return true;
     } else {
