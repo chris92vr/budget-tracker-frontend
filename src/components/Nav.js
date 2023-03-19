@@ -2,20 +2,8 @@ import { Link } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import isUserLoggedIn from '../utils';
 
-import {
-  faHome,
-  faSignInAlt,
-  faUserPlus,
-} from '@fortawesome/fontawesome-free-solid';
-
-function isLoggedIn() {
-  const token = sessionStorage.getItem('session_token');
-  if (token) {
-    return true;
-  }
-  return false;
-}
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,7 +29,7 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faHome} /> Home
               </Link>
             </li>
-            {isLoggedIn() ? (
+            {isUserLoggedIn() ? (
               <li className="nav-item">
                 <Link className="nav-link" to="/profile">
                   <ProfileButton />

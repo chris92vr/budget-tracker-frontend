@@ -8,14 +8,7 @@ import AddExpenseButton from '../components/addExpenseButton';
 import AddExpenseButtonBy from '../components/addExpenseButtonByID';
 import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
-
-function isLoggedIn() {
-  const token = sessionStorage.getItem('session_token');
-  if (token) {
-    return true;
-  }
-  return false;
-}
+import isUserLoggedIn from '../utils';
 
 function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
@@ -95,7 +88,7 @@ function Home() {
 
   return (
     <>
-      {isLoggedIn() ? (
+      {isUserLoggedIn() ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>
