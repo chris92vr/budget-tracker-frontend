@@ -1,5 +1,3 @@
-import Cookies from 'universal-cookie';
-
 export const currencyFormatter = new Intl.NumberFormat(undefined, {
   style: 'currency',
   currency: 'EUR',
@@ -24,7 +22,7 @@ export const formatDate = (date) => {
   );
 };
 
-export function isUserLoggedIn() {
+const isUserLoggedIn = () => {
   const response = fetch(
     'https://budgeet-tracker-api.herokuapp.com/protected ',
     {
@@ -51,4 +49,6 @@ export function isUserLoggedIn() {
     //   alert('Invalid username or password');
     // });
   );
-}
+};
+
+export default isUserLoggedIn;
