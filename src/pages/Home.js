@@ -22,13 +22,6 @@ function Home() {
   console.log('isUserLoggedIn', isUserLoggedIn());
   const [Budgets, setBudgets] = useState([]);
   // URL from .env file (see .env.example)
-  const [userLogged, setUserLogged] = useState(false);
-
-  if (isUserLoggedIn()) {
-    setUserLogged(true);
-  } else {
-    setUserLogged(false);
-  }
 
   useEffect(() => {
     // declare the async data fetching function
@@ -86,6 +79,37 @@ function Home() {
       // set state with the result
       setTotalMax(json.total_max);
       setTotalAmount(json.total_budget);
+    };
+
+    // call the function
+    const result = fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+    console.log(result);
+  }, []);
+
+  const [userLogged, setUserLogged] = useState(false);
+  useEffect(() => {
+    // declare the async data fetching function
+    const fetchData = async () => {
+      // get the data from the api
+      const user = await fetch(
+        'https://budgeet-tracker-api.herokuapp.com/protected',
+        {
+          credentials: 'include',
+          mode: 'cors',
+          method: 'GET',
+          AccessControlAllowOrigin:
+            'https://budget-tracker-frontend-delta.vercel.app',
+        }
+      );
+
+      // convert the data to json
+      const json = await user.json();
+
+      // set state with the result
+
+      setUserLogged(json.username);
     };
 
     // call the function
