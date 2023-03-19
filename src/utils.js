@@ -37,18 +37,23 @@ export const isUserLoggedIn = () => {
     }
   );
 
-  response.then(
-    (res) => {
+  const json = response
+    .then((res) => {
       if (res.status === 200) {
-        return true;
+        return res.json();
       } else {
         return false;
       }
-    }
-    // .catch((err) => {
-    //   alert('Invalid username or password');
-    // });
-  );
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
+
+  if (json === false) {
+    return false;
+  }
+  return json.username;
 };
 
 export default isUserLoggedIn;
