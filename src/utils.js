@@ -45,3 +45,5 @@ export const isUserLoggedIn = async () => {
     return false;
   }
 };
+
+export default isUserLoggedIn;
