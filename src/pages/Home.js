@@ -10,7 +10,7 @@ import ViewExpenses from '../components/ViewExpenses';
 import { Link } from 'react-router-dom';
 import isUserLoggedIn from '../utils';
 
-async function Home() {
+function Home() {
   const [showAddBudgetButton, setShowAddBudgetButton] = useState(false);
   const [showAddExpenseButton, setShowAddExpenseButton] = useState(false);
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
@@ -88,7 +88,7 @@ async function Home() {
 
   return (
     <>
-      {(await isUserLoggedIn()) ? (
+      {isUserLoggedIn() ? (
         <Container className="my-4">
           <Stack direction="horizontal" className="mt-4 mb-4">
             <h1 className=" me-auto">Budget Tracker © </h1>

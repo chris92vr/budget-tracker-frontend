@@ -22,8 +22,8 @@ export const formatDate = (date) => {
   );
 };
 
-export const isUserLoggedIn = async () => {
-  const response = await fetch(
+export const isUserLoggedIn = () => {
+  const response = fetch(
     'https://budgeet-tracker-api.herokuapp.com/protected ',
     {
       credentials: 'include',
@@ -36,14 +36,13 @@ export const isUserLoggedIn = async () => {
       },
     }
   );
-
-  if (response.status === 200) {
-    const json = await response.json();
-    return json;
-  } else {
-    console.log('not logged in');
-    return false;
-  }
+  response.then((res) => {
+    if (res.status === 200) {
+      return true;
+    } else {
+      return false;
+    }
+  });
 };
 
 export default isUserLoggedIn;
