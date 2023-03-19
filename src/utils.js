@@ -40,7 +40,7 @@ export const isUserLoggedIn = async () => {
   const json = await response.json();
   console.log('json', json);
   if (json.status === 'success') {
-    return true;
+    return json.username;
   } else {
     return false;
   }
