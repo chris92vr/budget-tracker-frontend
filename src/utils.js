@@ -22,28 +22,16 @@ export const formatDate = (date) => {
   );
 };
 
-export const isUserLoggedIn = async () => {
-  const response = await fetch(
-    'https://budgeet-tracker-api.herokuapp.com/protected ',
-    {
-      credentials: 'include',
-      mode: 'cors',
-      AccessControlAllowOrigin:
-        'https://budget-tracker-frontend-delta.vercel.app',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  );
-  response.then((res) => {
-    console.log('res', res);
-    if (res.status === 200) {
-      return true;
-    } else {
-      return false;
-    }
+export default function isUserLoggedIn() {
+  const user = fetch('https://budgeet-tracker-api.herokuapp.com/protected', {
+    credentials: 'include',
+    mode: 'cors',
+    method: 'GET',
   });
-};
 
-export default isUserLoggedIn;
+  if (user) {
+    return true;
+  } else {
+    return false;
+  }
+}
