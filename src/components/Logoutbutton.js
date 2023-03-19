@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { useNavigate } from 'react-router-dom';
 const LogoutButton = () => {
+  const navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
 
@@ -16,8 +17,9 @@ const LogoutButton = () => {
 
     response
       .then((res) => {
+        console.log(res);
         if (res.status === 200) {
-          window.location.href = '/';
+          navigate('/');
         } else {
           alert('Invalid username or password');
         }
