@@ -37,13 +37,11 @@ export const isUserLoggedIn = async () => {
     }
   );
 
-  const json = await response.json();
-  console.log('json', json);
-  if (json.status === 'success') {
-    return json.username;
+  if (response.status === 200) {
+    const json = await response.json();
+    return json;
   } else {
+    console.log('not logged in');
     return false;
   }
 };
-
-export default isUserLoggedIn;
