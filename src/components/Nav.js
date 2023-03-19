@@ -74,7 +74,7 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link">
+                  <Link className="nav-link" to="login">
                     <LogoutButton />
                   </Link>
                 </li>
